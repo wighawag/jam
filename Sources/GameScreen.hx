@@ -8,23 +8,21 @@ import cosmos.Model;
 
 import ys.sprite.Sprites;
 
-class CosmosScreen implements Screen {
+import syst.Populator;
+import syst.Controller;
+import syst.Physics;
+
+class GameScreen implements Screen {
 
   var _model : Model;
   var _presenter : CosmosKhaPresenter;
-  var _spritesPath : String;
 
-	public function new(model : Model, presenter : CosmosKhaPresenter, spritesPath : String) {
-    _model = model;
-    _presenter = presenter;
-    _model.setupPresenter(presenter);
-    _spritesPath = spritesPath;
+	public function new() {
+
 	}
 
   public function enter() {
-    var sprites = Sprites.load(_spritesPath);
-    _presenter.setSprites(sprites);
-    _model.start(0);
+
   }
 
   public function exit(elapsedTime : Float){
@@ -32,6 +30,13 @@ class CosmosScreen implements Screen {
 	}
 
 	public function update(elapsedTime : Float, dt : Float, input : Input) : Bool{
+    if(_model == null){
+      _model = new Model([new Populator(), new Controller(input), new Physics()]);
+  		_presenter = new RectanglesAndSpritesPresenter(Sprites.load("dummy_sprites.json"));
+      _model.setupPresenter(_presenter);
+
+      _model.start(0);
+    }
     _model.update(elapsedTime, dt);
 		return false;
 	}

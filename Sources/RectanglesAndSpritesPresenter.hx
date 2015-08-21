@@ -19,7 +19,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
   var spriting : Sprites;
 
-  public function setSprites(spriting : Sprites){
+  public function new(spriting : Sprites){
       this.spriting = spriting;
   }
 
