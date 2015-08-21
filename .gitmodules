@@ -6,3 +6,6 @@
 	path = Libraries/khage
 	url = https://github.com/wighawag/khage
 
+[submodule "Libraries/cosmos"]
+	path = Libraries/cosmos
+	url = https://github.com/wighawag/cosmos
