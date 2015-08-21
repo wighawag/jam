@@ -6,6 +6,7 @@ import kha.Loader;
 import ys.Shell;
 import ys.Input;
 
+import kha.Color;
 import kha.Font;
 import kha.FontStyle;
 
@@ -21,9 +22,9 @@ class LoadingScreen implements Screen {
 	}
 
   public function enter() {
-		//Loader.the.loadRoom("loading", function(){
-			font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 16);
-		//});
+		Loader.the.loadRoom("loading", function(){
+			font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 14);
+		});
 		//font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 14);
     //Configuration.setScreen(new LoadingScreen());
 
@@ -47,6 +48,8 @@ class LoadingScreen implements Screen {
 
 		frame.usingG2({
 			g2.clear();
+			g2.color = Color.Green;
+			g2.drawLine(0,0,frame.width,frame.height);
 			if(font != null){
 					g2.font = font;
 					g2.drawString("test",100,100);//frame.width/2, frame.height/2);
