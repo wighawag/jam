@@ -23,26 +23,10 @@
 			"name": "dummy_sprites.json",
 			"type": "blob"
 		},
-
-		{
-			"file": "colors.png",
-			"name": "colors.png",
-			"type": "image"
-		},
-		{
-			"file": "sprites.json",
-			"name": "sprites.json",
-			"type": "blob"
-		},
-		{
-			"file": "texture.json",
-			"name": "texture.json",
-			"type": "blob"
-		},
 		{
 			"type": "font",
 			"file": "arial.ttf",
-			"size": 14,
+			"size": 24,
 			"name": "Arial"
 		}
 	],
@@ -51,10 +35,7 @@
 			"assets": [
 				"dummy_atlas.json",
 				"dummy_atlas.png",
-				"dummy_sprites.json",
-				"colors.png",
-				"sprites.json",
-				"texture.json"
+				"dummy_sprites.json"
 			],
 			"name": "room0",
 			"neighbours": [],
@@ -62,7 +43,7 @@
 		},
 		{
 			"assets": [
-				"Arial14.kravur"
+				"Arial24.kravur"
 			],
 			"name": "loading",
 			"neighbours": [],
