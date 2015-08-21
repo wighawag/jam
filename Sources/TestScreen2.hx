@@ -24,7 +24,7 @@ class TestScreen2 implements Screen {
 	public function new() {
 	}
 
-	public function enter(now : Float){
+	public function enter(){
 		testBuffer = new Buffer<{pos:Vec3}>(3,3,StaticUsage);
 
 		testBuffer.rewind();
@@ -38,15 +38,15 @@ class TestScreen2 implements Screen {
 
 	}
 
-  public function exit(now : Float){
+  public function exit(elapsedTime : Float){
 
 	}
 
-	public function update(now : Float, dt : Float, input : Input) : Bool{
-		return false;
+	public function update(elapsedTime : Float, dt : Float, input : Input) : Bool{
+		return input.isKeyDown(kha.Key.ENTER) && elapsedTime > 0.5;
 	}
 
-	public function render(now : Float, frame:Framebuffer, input : Input) {
+	public function render(elapsedTime : Float, frame:Framebuffer, input : Input) {
 		frame.usingG4({
 			g4.clear(Color.Green);
 

@@ -37,7 +37,7 @@ class TestScreen implements Screen {
 	public function new() {
 	}
 
-	public function enter(now : Float){
+	public function enter(){
 		testBuffer = new Buffer<{position:Vec3,alpha:Float,texCoords:Vec2}>(1000,1000,DynamicUsage);
 		backgroundBuffer = new Buffer<{pos:Vec3}>(4,6,StaticUsage);
 
@@ -56,16 +56,16 @@ class TestScreen implements Screen {
 		sprites = Sprites.load("dummy_sprites.json");
 	}
 
-  public function exit(now : Float){
+  public function exit(elapsedTime : Float){
 		testBuffer = null;
 		backgroundBuffer = null;
 	}
 
-	public function update(now : Float, dt : Float, input : Input) : Bool{
-		return input.isKeyDown(kha.Key.ENTER);
+	public function update(elapsedTime : Float, dt : Float, input : Input) : Bool{
+		return input.isKeyDown(kha.Key.ENTER) && elapsedTime > 0.5;
 	}
 
-	public function render(now : Float, frame:Framebuffer, input : Input) {
+	public function render(elapsedTime : Float, frame:Framebuffer, input : Input) {
 		frame.usingG4({
 			viewport.ensureSize(g4,frame.width, frame.height);
 			camera.handleViewport(viewport);
@@ -83,7 +83,7 @@ class TestScreen implements Screen {
 			var context = new ys.g.Context();
 			context.save();
 			testBuffer.rewind();
-			sprites.writeToBuffer(testBuffer,context,"dummy", "idle",now, 20,20,0, 100, 100, true);
+			sprites.writeToBuffer(testBuffer,context,"dummy", "idle",elapsedTime, 20,20,0, 100, 100, true);
 			context.restore();
 
 			g4.usingProgram("texture.vert","texture.frag",{
@@ -100,7 +100,7 @@ class TestScreen implements Screen {
 		// 	//g2.clear();
 		// 	//g2.setBlendingMode(kha.graphics4.BlendingOperation.SourceAlpha,kha.graphics4.BlendingOperation.InverseDestinationAlpha);
 		// 	g2.pushTransformation(camera.g2Transformation);
-		//  	sprites.draw(g2, "dummy", "idle",now, 20,20, 100, 100, true);
+		//  	sprites.draw(g2, "dummy", "idle",elapsedTime, 20,20, 100, 100, true);
 		// 	g2.popTransformation();
 		//  });
 

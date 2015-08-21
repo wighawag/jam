@@ -6,22 +6,13 @@ import kha.Loader;
 import ys.Shell;
 import ys.Input;
 
-class LoadingScreen implements Screen {
+class SplashScreen implements Screen {
 
-	var finishedLoading : Bool = false;
 
 	public function new() {
 	}
 
   public function enter() {
-      //Configuration.setScreen(new LoadingScreen());
-
-      // Load room with our texture
-      Loader.the.loadRoom("room0", loadingFinished);
-  }
-
-	function loadingFinished() {
-    finishedLoading = true;
   }
 
   public function exit(elapsedTime : Float){
