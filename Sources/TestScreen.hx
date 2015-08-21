@@ -66,10 +66,13 @@ class TestScreen implements Screen {
 	}
 
 	public function render(elapsedTime : Float, frame:Framebuffer, input : Input) {
+		viewport.ensureSize(frame.width, frame.height);
+		camera.handleViewport(viewport);
+		camera.centerOn(0,0);//Math.sin(now),Math.cos(now));
+
 		frame.usingG4({
-			viewport.ensureSize(g4,frame.width, frame.height);
-			camera.handleViewport(viewport);
-			camera.centerOn(0,0);//Math.sin(now),Math.cos(now));
+
+			viewport.apply(g4);
 
 			g4.clear(Color.Black);
 
@@ -95,14 +98,13 @@ class TestScreen implements Screen {
 		});
 
 
-		// // TODO OrthoCamera without g4 viewport
-		// frame.usingG2({
-		// 	//g2.clear();
-		// 	//g2.setBlendingMode(kha.graphics4.BlendingOperation.SourceAlpha,kha.graphics4.BlendingOperation.InverseDestinationAlpha);
-		// 	g2.pushTransformation(camera.g2Transformation);
-		//  	sprites.draw(g2, "dummy", "idle",elapsedTime, 20,20, 100, 100, true);
-		// 	g2.popTransformation();
-		//  });
+
+		frame.usingG2({
+			g2.color = Color.White;
+			g2.pushTransformation(camera.g2Transformation);
+		 	sprites.draw(g2, "dummy", "idle",elapsedTime, 30,30, 100, 100, true);
+			g2.popTransformation();
+		 });
 
   }
 
