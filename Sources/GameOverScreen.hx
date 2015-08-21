@@ -1,8 +1,6 @@
 package;
 
 import kha.Framebuffer;
-import kha.Loader;
-
 import ys.Shell;
 import ys.Input;
 

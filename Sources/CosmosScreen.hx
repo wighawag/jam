@@ -1,15 +1,15 @@
 package;
 
 import kha.Framebuffer;
-import kha.Loader;
-
 import ys.Shell;
 import ys.Input;
+
+import cosmos.Model;
 
 class CosmosScreen implements Screen {
 
 
-  	public function new() {
+  	public function new(model : Model) {
   	}
 
     public function enter() {
@@ -20,7 +20,7 @@ class CosmosScreen implements Screen {
   	}
 
   	public function update(elapsedTime : Float, dt : Float, input : Input) : Bool{
-  		return true;
+  		return false;
   	}
 
   	public function render(elapsedTime : Float, frame:Framebuffer, input : Input) {

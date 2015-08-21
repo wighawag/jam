@@ -4,7 +4,8 @@
 		"name": "YsTest"
 	},
 	"libraries": [
-		"khage"
+		"khage",
+		"cosmos"
 	],
 	"assets": [
 		{
@@ -22,7 +23,7 @@
 			"name": "dummy_sprites.json",
 			"type": "blob"
 		},
-		
+
 		{
 			"file": "colors.png",
 			"name": "colors.png",
@@ -37,6 +38,12 @@
 			"file": "texture.json",
 			"name": "texture.json",
 			"type": "blob"
+		},
+		{
+			"type": "font",
+			"file": "arial.ttf",
+			"size": 14,
+			"name": "Arial"
 		}
 	],
 	"rooms": [
@@ -50,6 +57,14 @@
 				"texture.json"
 			],
 			"name": "room0",
+			"neighbours": [],
+			"parent": null
+		},
+		{
+			"assets": [
+				"Arial14.kravur"
+			],
+			"name": "loading",
 			"neighbours": [],
 			"parent": null
 		}

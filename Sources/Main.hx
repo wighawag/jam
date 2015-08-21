@@ -3,8 +3,11 @@ package;
 import ys.App;
 import ys.Shell;
 
+import cosmos.Model;
+
 class Main {
 	public static function main() {
-		App.start("YS_test",new Shell([new LoadingScreen(), new TestScreen(), new TestScreen2()]));
+		var model = new Model([]);
+		App.start("YS_test",new Shell([new LoadingScreen(), new TestScreen(), new CosmosScreen(model)]));
 	}
 }

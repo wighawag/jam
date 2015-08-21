@@ -71,7 +71,6 @@ class Shell implements Application{
   }
 
   inline function _update(now : Float, dt : Float, input : Input){
-    trace(now,dt);
     var elapsedTime = now - startTime;
     var done = currentScreen.update(elapsedTime, dt, input);
     if (done) {
