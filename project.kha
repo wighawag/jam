@@ -1,0 +1,57 @@
+{
+	"format": 3,
+	"game": {
+		"name": "YsTest"
+	},
+	"libraries": [
+		"khage"
+	],
+	"assets": [
+		{
+			"file": "dummy_atlas.png",
+			"name": "dummy_atlas.png",
+			"type": "image"
+		},
+		{
+			"file": "dummy_atlas.json",
+			"name": "dummy_atlas.json",
+			"type": "blob"
+		},
+		{
+			"file": "dummy_sprites.json",
+			"name": "dummy_sprites.json",
+			"type": "blob"
+		},
+		
+		{
+			"file": "colors.png",
+			"name": "colors.png",
+			"type": "image"
+		},
+		{
+			"file": "sprites.json",
+			"name": "sprites.json",
+			"type": "blob"
+		},
+		{
+			"file": "texture.json",
+			"name": "texture.json",
+			"type": "blob"
+		}
+	],
+	"rooms": [
+		{
+			"assets": [
+				"dummy_atlas.json",
+				"dummy_atlas.png",
+				"dummy_sprites.json",
+				"colors.png",
+				"sprites.json",
+				"texture.json"
+			],
+			"name": "room0",
+			"neighbours": [],
+			"parent": null
+		}
+	]
+}

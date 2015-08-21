@@ -1,0 +1,16 @@
+{
+  "textureAtlas" : "dummy_atlas.json",
+  "sprites":{"dummy":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"obj_Walk000.png"},
+		{"textureCutOut":"obj_Walk001.png"},
+		{"textureCutOut":"obj_Walk002.png"},
+		{"textureCutOut":"obj_Walk003.png"},
+		{"textureCutOut":"obj_Walk004.png"},
+		{"textureCutOut":"obj_Walk005.png"},
+		{"textureCutOut":"obj_Walk006.png"},
+		{"textureCutOut":"obj_Walk007.png"}
+	  ]
+	}}}
+}

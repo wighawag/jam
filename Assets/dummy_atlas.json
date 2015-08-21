@@ -1,0 +1,153 @@
+
+{
+  "bitmapId":"dummy_atlas.png",
+  "width":512,
+  "height":512,
+  "cutOuts":{
+  
+    "obj_Walk000.png":{
+      "x1":2,
+      "y1":155,
+      "x2":85,
+      "y2":306,
+	  "refX":37,
+	  "refY":32,
+      "srcX":91,
+      "srcY":96,
+	  "srcWidth":83,
+      "srcHeight":151,
+      "originalWidth" :256,
+      "originalHeight" :256,
+      "rotated":false,
+	  "cornerOffsetX":91,
+	  "cornerOffsetY":96
+    },
+  
+    "obj_Walk001.png":{
+      "x1":87,
+      "y1":155,
+      "x2":177,
+      "y2":305,
+	  "refX":37,
+	  "refY":31,
+      "srcX":91,
+      "srcY":97,
+	  "srcWidth":90,
+      "srcHeight":150,
+      "originalWidth" :256,
+      "originalHeight" :256,
+      "rotated":false,
+	  "cornerOffsetX":91,
+	  "cornerOffsetY":97
+    },
+  
+    "obj_Walk002.png":{
+      "x1":96,
+      "y1":2,
+      "x2":179,
+      "y2":152,
+	  "refX":37,
+	  "refY":31,
+      "srcX":91,
+      "srcY":97,
+	  "srcWidth":83,
+      "srcHeight":150,
+      "originalWidth" :256,
+      "originalHeight" :256,
+      "rotated":false,
+	  "cornerOffsetX":91,
+	  "cornerOffsetY":97
+    },
+  
+    "obj_Walk003.png":{
+      "x1":2,
+      "y1":308,
+      "x2":93,
+      "y2":458,
+	  "refX":45,
+	  "refY":31,
+      "srcX":83,
+      "srcY":97,
+	  "srcWidth":91,
+      "srcHeight":150,
+      "originalWidth" :256,
+      "originalHeight" :256,
+      "rotated":false,
+	  "cornerOffsetX":83,
+	  "cornerOffsetY":97
+    },
+  
+    "obj_Walk004.png":{
+      "x1":95,
+      "y1":307,
+      "x2":179,
+      "y2":455,
+	  "refX":38,
+	  "refY":32,
+      "srcX":90,
+      "srcY":96,
+	  "srcWidth":84,
+      "srcHeight":148,
+      "originalWidth" :256,
+      "originalHeight" :256,
+      "rotated":false,
+	  "cornerOffsetX":90,
+	  "cornerOffsetY":96
+    },
+  
+    "obj_Walk005.png":{
+      "x1":181,
+      "y1":2,
+      "x2":269,
+      "y2":149,
+	  "refX":37,
+	  "refY":31,
+      "srcX":91,
+      "srcY":97,
+	  "srcWidth":88,
+      "srcHeight":147,
+      "originalWidth" :256,
+      "originalHeight" :256,
+      "rotated":false,
+	  "cornerOffsetX":91,
+	  "cornerOffsetY":97
+    },
+  
+    "obj_Walk006.png":{
+      "x1":179,
+      "y1":154,
+      "x2":262,
+      "y2":302,
+	  "refX":37,
+	  "refY":31,
+      "srcX":91,
+      "srcY":97,
+	  "srcWidth":83,
+      "srcHeight":148,
+      "originalWidth" :256,
+      "originalHeight" :256,
+      "rotated":false,
+	  "cornerOffsetX":91,
+	  "cornerOffsetY":97
+    },
+  
+    "obj_Walk007.png":{
+      "x1":2,
+      "y1":2,
+      "x2":94,
+      "y2":153,
+	  "refX":46,
+	  "refY":31,
+      "srcX":82,
+      "srcY":97,
+	  "srcWidth":92,
+      "srcHeight":151,
+      "originalWidth" :256,
+      "originalHeight" :256,
+      "rotated":false,
+	  "cornerOffsetX":82,
+	  "cornerOffsetY":97
+    }
+  
+  }
+}

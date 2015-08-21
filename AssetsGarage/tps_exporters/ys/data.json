@@ -1,0 +1,27 @@
+{% load filters %}
+{
+  "bitmapId":"{{texture.fullName}}",
+  "width":{{texture.size.width}},
+  "height":{{texture.size.height}},
+  "cutOuts":{
+  {% for sprite in allSprites %}
+    "{{sprite.fullName}}":{
+      "x1":{{sprite.frameRect.x}},
+      "y1":{{sprite.frameRect.y}},
+      "x2":{{sprite.frameRect|computeX2}},
+      "y2":{{sprite.frameRect|computeY2}},
+	  "refX":{{sprite|computeRefX}},
+	  "refY":{{sprite|computeRefY}},
+      "srcX":{{sprite.sourceRect.x}},
+      "srcY":{{sprite.sourceRect.y}},
+	  "srcWidth":{{sprite.sourceRect.width}},
+      "srcHeight":{{sprite.sourceRect.height}},
+      "originalWidth" :{{sprite.untrimmedSize.width}},
+      "originalHeight" :{{sprite.untrimmedSize.width}},
+      "rotated":{{sprite.rotated}},
+	  "cornerOffsetX":{{sprite.cornerOffset.x}},
+	  "cornerOffsetY":{{sprite.cornerOffset.y}}
+    }{%if not forloop.last%},{%endif%}
+  {% endfor %}
+  }
+}
