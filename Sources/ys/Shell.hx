@@ -22,9 +22,9 @@ class Shell implements Application{
 		this.screens = screens;
 	}
 
-  public function init(now : Float){
+  public function init(now : Float, input : Input){
     currentIndex = 0;
-    enterScreen(now);
+    enterScreen(now, input);
   }
 
   public function update(now : Float, dt : Float, input : Input){
@@ -80,7 +80,7 @@ class Shell implements Application{
             currentIndex = 0;
             //TODO
         }
-        enterScreen(now);
+        enterScreen(now, input);
     }
   }
 
@@ -88,15 +88,15 @@ class Shell implements Application{
     currentScreen.render(now - startTime,framebuffer, input);
   }
 
-  function enterScreen(now : Float){
+  function enterScreen(now : Float, input : Input){
     startTime = now;
     currentScreen = screens[currentIndex];
-    currentScreen.enter();
+    currentScreen.enter(input);
   }
 }
 
 interface Screen{
-  function enter():Void;
+  function enter(input : Input):Void;
   function exit(elapsedTime : Float):Void;
   function update(elapsedTime : Float, dt : Float, input : Input):Bool;
   function render(elapsedTime : Float, framebuffer : Framebuffer, input : Input):Void;

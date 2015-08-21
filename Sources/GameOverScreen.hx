@@ -9,7 +9,7 @@ class GameOverScreen implements Screen {
 	public function new() {
 	}
 
-  public function enter() {
+  public function enter(input : Input) {
   }
 
   public function exit(elapsedTime : Float){

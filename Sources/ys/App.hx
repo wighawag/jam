@@ -7,7 +7,7 @@ typedef Framebuffer = kha.Framebuffer;
 
 interface Application{
   function update(now : Float, dt : Float, input : Input) : Void;
-  function init(now : Float) : Void;
+  function init(now : Float, input : Input) : Void;
   function render(now : Float, framebuffer : Framebuffer, input : Input) : Void;
 }
 
@@ -29,7 +29,7 @@ class App extends Game{
 
   override public function init(){
     _lastNow = kha.Sys.getTime();
-    _app.init(_lastNow);
+    _app.init(_lastNow, _input);
   }
 
   override public function update(){
@@ -40,6 +40,6 @@ class App extends Game{
   }
 
   override public function render(framebuffer : Framebuffer){
-    _app.render(kha.Sys.getTime(),framebuffer, _input); 
+    _app.render(kha.Sys.getTime(),framebuffer, _input);
   }
 }

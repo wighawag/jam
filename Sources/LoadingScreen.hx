@@ -21,7 +21,7 @@ class LoadingScreen implements Screen {
 	public function new() {
 	}
 
-  public function enter() {
+  public function enter(input : Input) {
 		Loader.the.loadRoom("loading", function(){
 			font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 14);
 		});

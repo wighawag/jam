@@ -21,8 +21,12 @@ class GameScreen implements Screen {
 
 	}
 
-  public function enter() {
+  public function enter(input : Input) {
+    _model = new Model([new Populator(), new Controller(input), new Physics()]);
+    _presenter = new RectanglesAndSpritesPresenter(Sprites.load("dummy_sprites.json"));
+    _model.setupPresenter(_presenter);
 
+    _model.start(0);
   }
 
   public function exit(elapsedTime : Float){
@@ -30,13 +34,6 @@ class GameScreen implements Screen {
 	}
 
 	public function update(elapsedTime : Float, dt : Float, input : Input) : Bool{
-    if(_model == null){
-      _model = new Model([new Populator(), new Controller(input), new Physics()]);
-  		_presenter = new RectanglesAndSpritesPresenter(Sprites.load("dummy_sprites.json"));
-      _model.setupPresenter(_presenter);
-
-      _model.start(0);
-    }
     _model.update(elapsedTime, dt);
 		return false;
 	}

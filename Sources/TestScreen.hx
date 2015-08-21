@@ -37,7 +37,7 @@ class TestScreen implements Screen {
 	public function new() {
 	}
 
-	public function enter(){
+	public function enter(input : Input){
 		testBuffer = new Buffer<{position:Vec3,alpha:Float,texCoords:Vec2}>(1000,1000,DynamicUsage);
 		backgroundBuffer = new Buffer<{pos:Vec3}>(4,6,StaticUsage);
 

@@ -24,7 +24,7 @@ class TestScreen2 implements Screen {
 	public function new() {
 	}
 
-	public function enter(){
+	public function enter(input : Input){
 		testBuffer = new Buffer<{pos:Vec3}>(3,3,StaticUsage);
 
 		testBuffer.rewind();
