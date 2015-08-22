@@ -19,11 +19,11 @@ class Populator implements System{
 
 	public function start(now : Float) {
 
-		model.addEntity([new Placement(100,100,200,200), new ColorComp(Color.Blue)]);
+		model.addEntity([new Placement(0,120,200,200), new ColorComp(Color.Blue)]);
 
-    model.addEntity([new Placement(100,100,50,50), new State("idle", now), new Asset("dummy"), new Player()]);
+    model.addEntity([new Placement(-270,120,50,50), new State("idle", now), new Asset("player"), new Player()]);
 
-    model.addEntity([new Placement(100,100,50,50), new State("idle", now), new Asset("dummy")]);
+    //model.addEntity([new Placement(100,100,50,50), new State("idle", now), new Asset("dummy")]);
 
 	}
 

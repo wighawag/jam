@@ -70,7 +70,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       break;
     }
     if(playerPlacement != null){
-        camera.centerOn(playerPlacement.x,playerPlacement.y);
+        camera.centerOn(playerPlacement.x,0);
     }else{
       camera.centerOn(0,0);
     }
@@ -84,12 +84,12 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
  			g4.usingProgram("simple.vert","simple.frag",{
  				program.set_viewproj(Matrix4.identity());
- 				program.set_color(0.2,0.2,0.2,1);
+ 				program.set_color(0,0,0,1);
  				program.draw(backgroundBuffer);
  			});
     });
 
-    frame.usingG2({
+    /*frame.usingG2({
       g2.pushTransformation(camera.g2Transformation);
       for(rectangle in rectangles){
         var placement = rectangle.placement;
@@ -109,16 +109,20 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       //
 
       g2.popTransformation();
-		 });
+		 });*/
 
 
  		frame.usingG4({
 
  			viewport.apply(g4);
 
+
  			var context = new ys.g.Context();
  			context.save();
  			testBuffer.rewind();
+      spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime, 0,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime, 0,160,0, FOCUS_WIDTH, 60, false);
+     
       for(sprite in sprites){
         var placement = sprite.placement;
         var state = sprite.state;
@@ -126,15 +130,15 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         spriting.writeToBuffer(testBuffer,context,asset.id,state.state,state.getElapsedTime(elapsedTime),placement.x,placement.y,0, placement.width, placement.height, true);
       }
 
-      spriting.writeToBuffer(testBuffer,context,"dummy", "idle",elapsedTime, 0,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
-
+      
  			context.restore();
 
  			g4.usingProgram("texture.vert","normal.frag",{
  				program.set_viewproj(camera.viewproj);
  				program.set_tex(spriting.image);
         program.set_normal(spriting.normal);
-        program.set_ambientColor(0.2,0.2,0.2,0.2);
+        /*program.set_ambientColor(1,1,1,1);*/
+        program.set_ambientColor(0.5,0.5,0.5,0.5);
         if(playerPlacement != null){
           var lightPosVec = new Vector3(playerPlacement.x,playerPlacement.y,0.075);
           var newLightPosVec = camera.toBufferCoordinates(lightPosVec);
