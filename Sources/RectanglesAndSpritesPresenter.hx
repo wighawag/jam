@@ -135,9 +135,15 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
  				program.set_tex(spriting.image);
         program.set_normal(spriting.normal);
         program.set_ambientColor(0.2,0.2,0.2,0.2);
-        //var lightPosVec = new Vector3(input.getMouseX(),input.getMouseY(),0.075);
-        //lightPosVec = camera.toBufferCoordinates(lightPosVec, lightPosVec);
-        program.set_lightPos(input.getMouseX(),input.getMouseY(),0.075);//lightPosVec.x, lightPosVec.y, lightPosVec.z);
+        if(playerPlacement != null){
+          var lightPosVec = new Vector3(playerPlacement.x,playerPlacement.y,0.075);
+          var newLightPosVec = camera.toBufferCoordinates(lightPosVec);
+          program.set_lightPos(newLightPosVec.x, newLightPosVec.y, newLightPosVec.z);
+          trace(newLightPosVec);
+        }else{
+          program.set_lightPos(input.getMouseX(),input.getMouseY(),0.075);//lightPosVec.x, lightPosVec.y, lightPosVec.z);
+        }
+
         program.set_lightColor(1,1,1,1);
 
         program.set_resolution(frame.width, frame.height); //TODO use bufferWidth ...
