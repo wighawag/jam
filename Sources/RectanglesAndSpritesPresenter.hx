@@ -11,6 +11,10 @@ import comp.Asset;
 import comp.ColorComp;
 import comp.Player;
 
+import kha.math.Vector3;
+
+import ys.Input;
+
 import ys.sprite.Sprites;
 
 using Khage;
@@ -55,7 +59,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
   		backgroundBuffer.writeIndex(3);
   }
 
-  public function render(elapsedTime : Float, frame:Framebuffer) : Void{
+  public function render(elapsedTime : Float, frame:Framebuffer, input : Input) : Void{
 
     viewport.ensureSize(frame.width, frame.height);
  		camera.handleViewport(viewport);
@@ -126,9 +130,18 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
  			context.restore();
 
- 			g4.usingProgram("texture.vert","texture.frag",{
+ 			g4.usingProgram("texture.vert","normal.frag",{
  				program.set_viewproj(camera.viewproj);
  				program.set_tex(spriting.image);
+        program.set_normal(spriting.normal);
+        program.set_ambientColor(0.2,0.2,0.2,0.2);
+        //var lightPosVec = new Vector3(input.getMouseX(),input.getMouseY(),0.075);
+        //lightPosVec = camera.toBufferCoordinates(lightPosVec, lightPosVec);
+        program.set_lightPos(input.getMouseX(),input.getMouseY(),0.075);//lightPosVec.x, lightPosVec.y, lightPosVec.z);
+        program.set_lightColor(1,1,1,3);
+
+        program.set_resolution(frame.width, frame.height); //TODO use bufferWidth ...
+        program.set_falloff(0.2,0.4,0.8); //TODO? would clear cache and set values to be uploaded only
  				program.draw(testBuffer);
  			});
 

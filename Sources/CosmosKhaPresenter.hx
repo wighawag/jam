@@ -6,5 +6,5 @@ import kha.Framebuffer;
 import cosmos.CosmosPresenter;
 
 interface CosmosKhaPresenter extends CosmosPresenter{
-  public function render(elapsedTime : Float, frame:Framebuffer) : Void;
+  public function render(elapsedTime : Float, frame:Framebuffer, input : Input) : Void;
 }

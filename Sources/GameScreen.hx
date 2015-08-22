@@ -39,7 +39,7 @@ class GameScreen implements Screen {
 	}
 
 	public function render(elapsedTime : Float, frame:Framebuffer, input : Input) {
-    _presenter.render(elapsedTime, frame);
+    _presenter.render(elapsedTime, frame, input);
   }
 
 }

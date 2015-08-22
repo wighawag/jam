@@ -179,10 +179,12 @@ class Sprite{
 class Sprites{
 	var sprites : Map<String,Sprite>;
 	public var image(default,null) : kha.Image;
+	public var normal(default,null) : kha.Image;
 
-	function new(spritesMap : Map<String,Sprite>, image : kha.Image){
+	function new(spritesMap : Map<String,Sprite>, image : kha.Image, normal : kha.Image){
 		sprites = spritesMap;
 		this.image = image;
+		this.normal = normal;
 	}
 
 	public static function load(spritePath : String){
@@ -190,7 +192,12 @@ class Sprites{
     var spriteDataSet : SpriteDataSet = haxe.Json.parse(Loader.the.getBlob(spritePath).toString());
     var spriteSet = spriteDataSet.sprites;
     var textureAtlas : TextureAtlas = haxe.Json.parse(Loader.the.getBlob(spriteDataSet.textureAtlas).toString());
-		var image = Loader.the.getImage(textureAtlas.bitmapId);
+		var imagePath = textureAtlas.bitmapId;
+		var image = Loader.the.getImage(imagePath);
+		var dotIndex = imagePath.lastIndexOf(".");
+		var normalPath = imagePath.substr(0,dotIndex) + "_n" + imagePath.substr(dotIndex);
+		trace(normalPath);
+		var normal = Loader.the.getImage(normalPath);
 		for(spriteId in Reflect.fields(spriteSet)){
 			var spriteData : SpriteData = Reflect.field(spriteSet,spriteId);
 			for (animationId in Reflect.fields(spriteData)){
@@ -218,7 +225,7 @@ class Sprites{
         spritesMap[spriteId] = sprite;
     }
 
-		return new Sprites(spritesMap, image);
+		return new Sprites(spritesMap, image, normal);
 	}
 
 	public function writeToBuffer(buffer : Buffer<{position:Vec3, alpha:Float, texCoords:Vec2}>, context : ys.g.Context, spriteId : String, animationName : String, elapsedTime : Float, x : Float, y : Float, z : Float, ?width : Float = 0, ?height : Float = 0, ?keepRatio : Bool = true) : Void{

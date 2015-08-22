@@ -14,6 +14,11 @@
 			"type": "image"
 		},
 		{
+			"file": "dummy_atlas_n.png",
+			"name": "dummy_atlas_n.png",
+			"type": "image"
+		},
+		{
 			"file": "dummy_atlas.json",
 			"name": "dummy_atlas.json",
 			"type": "blob"
@@ -35,7 +40,8 @@
 			"assets": [
 				"dummy_atlas.json",
 				"dummy_atlas.png",
-				"dummy_sprites.json"
+				"dummy_sprites.json",
+				"dummy_atlas_n.png"
 			],
 			"name": "room0",
 			"neighbours": [],
