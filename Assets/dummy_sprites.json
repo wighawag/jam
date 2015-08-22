@@ -1,6 +1,32 @@
 {
   "textureAtlas" : "dummy_atlas.json",
-  "sprites":{"dummy":{"idle":{
+  "sprites":{"player":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"player.png"},
+		{"textureCutOut":"player.png"}
+	  ]
+	}},"castle":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"castle.jpg"}		
+	  ]
+	}},"night":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"night.jpg"}		
+	  ]
+	}},"greengrass":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"greengrass3.blend_texture.png"}		
+	  ]
+	}},"prarie":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"prarie.jpg"}		
+	  ]
+	}},"dummy":{"idle":{
     "defaultMsDuration":100,
     "frames":[
         {"textureCutOut":"obj_Walk000.png"},

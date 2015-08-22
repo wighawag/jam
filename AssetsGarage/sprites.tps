@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.9.2</string>
         <key>fileName</key>
-        <string>C:/Development/haxe/kha_test/wighawag_Empty/AssetsGarage/sprites.tps</string>
+        <string>C:/Users/Lenouvo/gamedev/ld33/notsosurejam/jam/AssetsGarage/sprites.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -198,6 +198,11 @@
             <filename>obj_Walk005.png</filename>
             <filename>obj_Walk006.png</filename>
             <filename>obj_Walk007.png</filename>
+            <filename>night.jpg</filename>
+            <filename>castle.jpg</filename>
+            <filename>prarie.jpg</filename>
+            <filename>player.png</filename>
+            <filename>greengrass3.blend_texture.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
