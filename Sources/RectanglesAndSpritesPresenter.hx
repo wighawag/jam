@@ -126,7 +126,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         spriting.writeToBuffer(testBuffer,context,asset.id,state.state,state.getElapsedTime(elapsedTime),placement.x,placement.y,0, placement.width, placement.height, true);
       }
 
-      spriting.writeToBuffer(testBuffer,context,"dummy", "idle",elapsedTime, 100,100,0, 50, 50, true);
+      spriting.writeToBuffer(testBuffer,context,"dummy", "idle",elapsedTime, 0,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
 
  			context.restore();
 
@@ -138,10 +138,10 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         //var lightPosVec = new Vector3(input.getMouseX(),input.getMouseY(),0.075);
         //lightPosVec = camera.toBufferCoordinates(lightPosVec, lightPosVec);
         program.set_lightPos(input.getMouseX(),input.getMouseY(),0.075);//lightPosVec.x, lightPosVec.y, lightPosVec.z);
-        program.set_lightColor(1,1,1,3);
+        program.set_lightColor(1,1,1,1);
 
         program.set_resolution(frame.width, frame.height); //TODO use bufferWidth ...
-        program.set_falloff(0.2,0.4,0.8); //TODO? would clear cache and set values to be uploaded only
+        program.set_falloff(0.2,0.4,20); //TODO? would clear cache and set values to be uploaded only
  				program.draw(testBuffer);
  			});
 
