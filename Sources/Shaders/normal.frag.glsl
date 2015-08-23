@@ -13,6 +13,7 @@ uniform vec3 falloff;
 uniform vec3 lightPos2;
 uniform vec4 lightColor2;      //light RGBA -- alpha is intensity
 uniform vec2 resolution2;      //resolution of screen need to know the position of the pixel
+uniform vec4 ambientColor2;
 uniform vec3 falloff2;
 
 
@@ -53,13 +54,13 @@ void kore(void)
     vec3 L2 = normalize(lightDir2);
 
     vec3 diffuse2 = (lightColor2.rgb * lightColor2.a) * max(dot(N2, L2), 0.0);
-    //vec3 ambient2 = ambientColor2.rgb * ambientColor2.a;
+    vec3 ambient2 = ambientColor2.rgb * ambientColor2.a;
     float attenuation2 = 1.0 / ( falloff2.x + (falloff2.y*D2) + (falloff2.z*D2*D2) );
 
-    vec3 intensity2 = ambient + diffuse2 * attenuation2;
+    vec3 intensity2 = ambient2 + diffuse2 * attenuation2;
 
     ///////////
-    //Bvec3 finalColor = texColor.rgb * max(intensity,intensity2);
+    //vec3 finalColor = texColor.rgb * max(intensity,intensity2);
     vec3 finalColor = texColor.rgb * (intensity+intensity2);
   
     gl_FragColor = vec4(finalColor, texColor.a);

@@ -141,10 +141,10 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
  			var context = new ys.g.Context();
  			context.save();
  			testBuffer.rewind();
-      spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,0+ (playerPlacement.x),0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
+      spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,30+ (playerPlacement.x)*99/100,0, 0, 1.1*FOCUS_WIDTH, 1.1*FOCUS_HEIGHT, true);
       /*spriting.writeToBuffer(testBuffer,context,"prarie", "idle",elapsedTime, FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
       spriting.writeToBuffer(testBuffer,context,"castle", "idle",elapsedTime, 2*FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);*/
-      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,0+ ((FOCUS_WIDTH*4)-600), 160, 0, FOCUS_WIDTH*8, 56, false);
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,0+ ((FOCUS_WIDTH*8)-600), 160, 0, FOCUS_WIDTH*16, 56, false);
      
       for(sprite in sprites){
         var placement = sprite.placement;
@@ -162,10 +162,13 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         program.set_normal(spriting.normal);
         /*program.set_ambientColor(1,1,1,1);*/
         /*program.set_ambientColor(0.5,0.5,0.5,0.5);*/
+        /*program.set_ambientColor(0.25,0.25,0.25,0.25);*/
         /*program.set_ambientColor(0.1,0.1,0.1,0.1);*/
-        program.set_ambientColor(0.25,0.25,0.25,0.25);
+        program.set_ambientColor(0.4,0.4,0.4,0.4);
+        program.set_ambientColor2(0.4,0.4,0.4,0.4);
+        
         if(playerPlacement != null){
-          var lightPosVec = new Vector3(80+ (playerPlacement.x),-30,0.075);
+          var lightPosVec = new Vector3(80+ (playerPlacement.x)*99/100,-30,0.075);
           /*var lightPosVec = new Vector3(playerPlacement.x+30,playerPlacement.y-30,0.075);*/
           var newLightPosVec = camera.toBufferCoordinates(lightPosVec);
 
@@ -187,7 +190,8 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         var lightPosVec2 = new Vector3(mobPlacement.x+30,mobPlacement.y+30,0.075);
         var newLightPosVec2 = camera.toBufferCoordinates(lightPosVec2);
         program.set_lightPos2(newLightPosVec2.x, newLightPosVec2.y, newLightPosVec2.z);
-        program.set_lightColor2(1,1,0,2);
+        program.set_lightColor2(1,1,0,1);
+        /*program.set_falloff2(0.2,0.8,20);*/
         program.set_falloff2(0.2,0.4,200);   
 
  				program.draw(testBuffer);
@@ -229,7 +233,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       g2.drawString(""+playerPlacement.width+"",playerPlacement.x-0.5*FOCUS_WIDTH+50,-FOCUS_HEIGHT/2+10);
       g2.drawString(""+playerPlacement.height+"",playerPlacement.x-0.5*FOCUS_WIDTH+100,-FOCUS_HEIGHT/2+10);
       g2.drawString(""+mobPlacement.width+"",playerPlacement.x-0.5*FOCUS_WIDTH+50,-FOCUS_HEIGHT/2+30);
-      g2.drawString(""+mobPlacement.height+"",playerPlacement.x-0.5*FOCUS_WIDTH+100,-FOCUS_HEIGHT/2+30);
+      g2.drawString(""+Std.int(Math.random())+"",playerPlacement.x-0.5*FOCUS_WIDTH+100,-FOCUS_HEIGHT/2+30);
       g2.popTransformation();   
      });
 
