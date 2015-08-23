@@ -3,6 +3,8 @@ package comp;
 class Placement{
   public var x : Float = 0;
   public var y : Float = 0;
+  public var vx : Float = 0;
+  public var vy : Float = 0;
   public var width : Float = 1;
   public var height : Float = 1;
 

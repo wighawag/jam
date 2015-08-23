@@ -1,6 +1,6 @@
 package comp;
 
-class Player{
+class Bandit{
   public var goingLeft : Bool;
   public var goingRight : Bool;
   public var jump : Bool;
