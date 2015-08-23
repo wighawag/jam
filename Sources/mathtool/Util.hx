@@ -2,6 +2,12 @@ package mathtool;
 
 class Util
 {
+    public static inline function AABB(a:RectPoly, b:RectPoly):Bool
+    {
+        if ( (Math.abs(a.x - b.x) > (a.width/2 + b.width/2))==true ){ return false;}
+        else if ( (Math.abs(a.y - b.y) > (a.height/2 + b.height/2))==true ){ return false;}
+        else {return true;}
+    }
 	////////////DETERMINANT//////////////////
 	public static inline function detM2x2(
         m00:Float, m10:Float,
