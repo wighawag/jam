@@ -23,6 +23,24 @@
 	  "cornerOffsetY":0
     },
   
+    "fire.png":{
+      "x1":939,
+      "y1":791,
+      "x2":1001,
+      "y2":880,
+	  "refX":31,
+	  "refY":44.5,
+      "srcX":0,
+      "srcY":0,
+	  "srcWidth":62,
+      "srcHeight":89,
+      "originalWidth" :62,
+      "originalHeight" :62,
+      "rotated":false,
+	  "cornerOffsetX":0,
+	  "cornerOffsetY":0
+    },
+  
     "greengrass3.blend_texture.png":{
       "x1":516,
       "y1":697,

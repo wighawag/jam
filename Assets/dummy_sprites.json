@@ -6,7 +6,7 @@
         {"textureCutOut":"castle.jpg"}		
 	  ]
 	}},"village":{"idle":{
-    "defaultMsDuration":100,
+    "defaultMsDuration":200,
     "frames":[
         {"textureCutOut":"village.png"},
 		{"textureCutOut":"village2.png"}		
