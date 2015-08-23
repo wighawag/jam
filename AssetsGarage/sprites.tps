@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.9.2</string>
         <key>fileName</key>
-        <string>C:/Users/Lenouvo/gamedev/ld33/notsosurejam/fork/jam/AssetsGarage/sprites.tps</string>
+        <string>C:/Development/haxe/kha_test/jam/AssetsGarage/sprites.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -226,6 +226,8 @@
             <filename>spriter_monster_roll_005.png</filename>
             <filename>spriter_monster_roll_006.png</filename>
             <filename>spriter_monster_roll_007.png</filename>
+            <filename>spriter_monster_roll_000.png</filename>
+            <filename>village2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
