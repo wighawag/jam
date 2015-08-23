@@ -1,12 +1,6 @@
 {
   "textureAtlas" : "dummy_atlas.json",
-  "sprites":{"player":{"idle":{
-    "defaultMsDuration":100,
-    "frames":[
-        {"textureCutOut":"player.png"},
-		{"textureCutOut":"player.png"}
-	  ]
-	}},"castle":{"idle":{
+  "sprites":{"castle":{"idle":{
     "defaultMsDuration":100,
     "frames":[
         {"textureCutOut":"castle.jpg"}		
@@ -37,6 +31,19 @@
 		{"textureCutOut":"obj_Walk005.png"},
 		{"textureCutOut":"obj_Walk006.png"},
 		{"textureCutOut":"obj_Walk007.png"}
+	  ]
+	}},"player":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"spriter_monster_walk_000.png"},
+		{"textureCutOut":"spriter_monster_walk_001.png"},
+		{"textureCutOut":"spriter_monster_walk_002.png"},
+		{"textureCutOut":"spriter_monster_walk_003.png"},
+		{"textureCutOut":"spriter_monster_walk_004.png"},
+		{"textureCutOut":"spriter_monster_walk_005.png"},
+		{"textureCutOut":"spriter_monster_walk_006.png"},
+		{"textureCutOut":"spriter_monster_walk_007.png"},
+		{"textureCutOut":"spriter_monster_walk_008.png"}
 	  ]
 	}}}
 }

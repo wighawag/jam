@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.9.2</string>
         <key>fileName</key>
-        <string>C:/Users/Lenouvo/gamedev/ld33/notsosurejam/jam/AssetsGarage/sprites.tps</string>
+        <string>C:/Development/haxe/kha_test/jam/AssetsGarage/sprites.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -203,6 +203,15 @@
             <filename>prarie.jpg</filename>
             <filename>player.png</filename>
             <filename>greengrass3.blend_texture.png</filename>
+            <filename>spriter_monster_walk_000.png</filename>
+            <filename>spriter_monster_walk_001.png</filename>
+            <filename>spriter_monster_walk_002.png</filename>
+            <filename>spriter_monster_walk_003.png</filename>
+            <filename>spriter_monster_walk_004.png</filename>
+            <filename>spriter_monster_walk_005.png</filename>
+            <filename>spriter_monster_walk_006.png</filename>
+            <filename>spriter_monster_walk_007.png</filename>
+            <filename>spriter_monster_walk_008.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
