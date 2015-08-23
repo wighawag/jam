@@ -25,6 +25,11 @@
     "frames":[
         {"textureCutOut":"prarie.jpg"}		
 	  ]
+	}},"spear":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"spear.png"}		
+	  ]
 	}},"dummy":{"idle":{
     "defaultMsDuration":100,
     "frames":[

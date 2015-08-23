@@ -11,6 +11,7 @@ import comp.Asset;
 import comp.ColorComp;
 import comp.Player;
 import comp.Scene;
+import comp.Mob;
 
 import kha.math.Vector3;
 
@@ -38,6 +39,8 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
   var spriting : Sprites;
 
   var rectangles : Entities<{placement:Placement, color : ColorComp}>;
+
+  var mobs : Entities<{placement:Placement, mob: Mob}>;
   var sprites : Entities<{placement:Placement, state: State, asset : Asset}>;
   var players : Entities<{placement:Placement,player:Player}>; //the focus should probably done in the model ? maybe an entity with a component focus?
   var scenes : Entities<{scene:Scene}>;
@@ -69,6 +72,12 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       break;
     }
 
+    var mobPlacement : Placement = null;
+    for(m in mobs){
+      mobPlacement = m.placement;
+      break;
+    }
+
     var playerPlacement : Placement = null;
     for(p in players){
       playerPlacement = p.placement;
@@ -80,11 +89,8 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       camera.centerOn(0,0);
     }
     
-    if(sceneEntity.interlude==false){
-      if(playerPlacement.x>FOCUS_WIDTH*4-400){
-      sceneEntity.screen=2;
-    sceneEntity.interlude=true;
-  }
+    if(sceneEntity.interlude==false && sceneEntity.gameover==false){
+    
     viewport.ensureSize(frame.width, frame.height);
  		camera.handleViewport(viewport);
 
@@ -124,6 +130,8 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       g2.popTransformation();
 		 });*/
 
+    
+
 
  		frame.usingG4({
 
@@ -133,10 +141,10 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
  			var context = new ys.g.Context();
  			context.save();
  			testBuffer.rewind();
-      spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,0+ (270+playerPlacement.x)*3/4,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
+      spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,0+ (playerPlacement.x),0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
       /*spriting.writeToBuffer(testBuffer,context,"prarie", "idle",elapsedTime, FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
       spriting.writeToBuffer(testBuffer,context,"castle", "idle",elapsedTime, 2*FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);*/
-      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,0+ ((FOCUS_WIDTH*2)-300), 160, 0, FOCUS_WIDTH*4, 56, false);
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,0+ ((FOCUS_WIDTH*4)-600), 160, 0, FOCUS_WIDTH*8, 56, false);
      
       for(sprite in sprites){
         var placement = sprite.placement;
@@ -157,7 +165,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         /*program.set_ambientColor(0.1,0.1,0.1,0.1);*/
         program.set_ambientColor(0.25,0.25,0.25,0.25);
         if(playerPlacement != null){
-          var lightPosVec = new Vector3(80+ (270+playerPlacement.x)*3/4,-30,0.075);
+          var lightPosVec = new Vector3(80+ (playerPlacement.x),-30,0.075);
           /*var lightPosVec = new Vector3(playerPlacement.x+30,playerPlacement.y-30,0.075);*/
           var newLightPosVec = camera.toBufferCoordinates(lightPosVec);
 
@@ -176,24 +184,74 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         /*program.set_falloff(0.2,0.4,40);*/
 
        
-        var lightPosVec2 = new Vector3(playerPlacement.x+30,playerPlacement.y-30,0.075);
+        var lightPosVec2 = new Vector3(mobPlacement.x+30,mobPlacement.y+30,0.075);
         var newLightPosVec2 = camera.toBufferCoordinates(lightPosVec2);
         program.set_lightPos2(newLightPosVec2.x, newLightPosVec2.y, newLightPosVec2.z);
-        program.set_lightColor2(1,1,0,1);
-        program.set_falloff2(0.2,0.8,40);   
+        program.set_lightColor2(1,1,0,2);
+        program.set_falloff2(0.2,0.4,200);   
 
  				program.draw(testBuffer);
 
  			});
 
  		});
+
+    
+    frame.usingG2({
+      g2.pushTransformation(camera.g2Transformation);
+      for(rectangle in rectangles){
+        var placement = rectangle.placement;
+        g2.color = rectangle.color.color;
+        g2.fillRect(-FOCUS_WIDTH*3/2+ (playerPlacement.x), -FOCUS_HEIGHT/2,FOCUS_WIDTH, FOCUS_HEIGHT);
+      }
+
+      for(rectangle in rectangles){
+        var placement = rectangle.placement;
+        g2.color = rectangle.color.color;
+        g2.fillRect(FOCUS_WIDTH/2+ (playerPlacement.x),-FOCUS_HEIGHT/2, FOCUS_WIDTH, FOCUS_HEIGHT);
+      }
+      for(sprite in sprites){
+        var placement = sprite.placement;
+        g2.color = Color.Blue;
+        g2.drawRect(placement.rect.x-placement.rect.width/2 , placement.rect.y-placement.rect.height/2, placement.rect.width, placement.rect.height);
+      }
+      g2.popTransformation();
+     });
+
+
+    frame.usingG2({
+      g2.pushTransformation(camera.g2Transformation);
+      g2.color = Color.Green;
+      g2.drawString(""+Std.int(playerPlacement.x)+"",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+10);
+      g2.drawString(""+Std.int(mobPlacement.x)+"",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+30);
+      g2.drawString(""+Std.int(playerPlacement.x-mobPlacement.x)+"",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+50);
+
+      g2.drawString(""+playerPlacement.width+"",playerPlacement.x-0.5*FOCUS_WIDTH+50,-FOCUS_HEIGHT/2+10);
+      g2.drawString(""+playerPlacement.height+"",playerPlacement.x-0.5*FOCUS_WIDTH+100,-FOCUS_HEIGHT/2+10);
+      g2.drawString(""+mobPlacement.width+"",playerPlacement.x-0.5*FOCUS_WIDTH+50,-FOCUS_HEIGHT/2+30);
+      g2.drawString(""+mobPlacement.height+"",playerPlacement.x-0.5*FOCUS_WIDTH+100,-FOCUS_HEIGHT/2+30);
+      g2.popTransformation();   
+     });
+
+
   }
-  else{
+  else if(sceneEntity.interlude==true && sceneEntity.gameover==false){
     frame.usingG2({
       g2.clear();
       g2.color = Color.Green;
       g2.drawLine(0,0,frame.width,frame.height);
       g2.drawString("Once upon a Time...",frame.width/2,frame.height/2);
+      
+
+     });
+  }
+  else if(sceneEntity.interlude==false && sceneEntity.gameover==true){
+    frame.usingG2({
+      g2.clear();
+      g2.color = Color.Green;
+      g2.drawLine(0,0,frame.width,frame.height);
+      g2.drawString("GameOver",frame.width/2,frame.height/2);
+      
 
      });
   }

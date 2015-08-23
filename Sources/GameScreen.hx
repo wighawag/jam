@@ -11,6 +11,7 @@ import ys.sprite.Sprites;
 import syst.Populator;
 import syst.Controller;
 import syst.Physics;
+import syst.Collision;
 
 class GameScreen implements Screen {
 
@@ -22,7 +23,7 @@ class GameScreen implements Screen {
 	}
 
   public function enter(input : Input) {
-    _model = new Model([new Populator(), new Controller(input), new Physics()]);
+    _model = new Model([new Populator(), new Controller(input), new Physics(), new Collision()]);
     _presenter = new RectanglesAndSpritesPresenter(Sprites.load("dummy_sprites.json"));
     _model.setupPresenter(_presenter);
 

@@ -6,6 +6,7 @@ class Player{
   public var jump : Bool;
   public var jumping : Bool;
   public var crouch : Bool;
+  public var life : Float=1;
 
   public function new(){
     reset();
