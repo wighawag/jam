@@ -50,8 +50,7 @@
     "defaultMsDuration":100,
     "frames":[
         {"textureCutOut":"spriter_monster_crouch_000.png"},
-		{"textureCutOut":"spriter_monster_crouch_001.png"},
-
+		{"textureCutOut":"spriter_monster_crouch_001.png"}
 	  ]
 	},
 	"jump":{
@@ -59,7 +58,7 @@
     "frames":[
         {"textureCutOut":"spriter_monster_jump_000.png"},
 		{"textureCutOut":"spriter_monster_jump_001.png"},
-		{"textureCutOut":"spriter_monster_jump_002.png"},
+		{"textureCutOut":"spriter_monster_jump_002.png"}
 
 	  ]
 	}}}
