@@ -25,11 +25,6 @@
     "frames":[
         {"textureCutOut":"prarie.jpg"}		
 	  ]
-	}},"spear":{"idle":{
-    "defaultMsDuration":100,
-    "frames":[
-        {"textureCutOut":"spear.png"}		
-	  ]
 	}},"dummy":{"idle":{
     "defaultMsDuration":100,
     "frames":[
@@ -70,6 +65,19 @@
 		{"textureCutOut":"spriter_monster_jump_001.png"},
 		{"textureCutOut":"spriter_monster_jump_002.png"}
 
+	  ]
+	},
+	"roll":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"spriter_monster_roll_000.png"},
+		{"textureCutOut":"spriter_monster_roll_001.png"},
+		{"textureCutOut":"spriter_monster_roll_002.png"},
+		{"textureCutOut":"spriter_monster_roll_003.png"},
+		{"textureCutOut":"spriter_monster_roll_004.png"},
+		{"textureCutOut":"spriter_monster_roll_005.png"},
+		{"textureCutOut":"spriter_monster_roll_006.png"},
+		{"textureCutOut":"spriter_monster_roll_007.png"}
 	  ]
 	}}}
 }

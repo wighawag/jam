@@ -239,29 +239,11 @@
 	  "cornerOffsetY":0
     },
   
-    "spear.png":{
-      "x1":516,
-      "y1":594,
-      "x2":705,
-      "y2":644,
-	  "refX":94.5,
-	  "refY":25,
-      "srcX":0,
-      "srcY":0,
-	  "srcWidth":189,
-      "srcHeight":50,
-      "originalWidth" :189,
-      "originalHeight" :189,
-      "rotated":false,
-	  "cornerOffsetX":0,
-	  "cornerOffsetY":0
-    },
-  
     "spriter_monster_crouch_000.png":{
       "x1":516,
-      "y1":646,
+      "y1":594,
       "x2":673,
-      "y2":849,
+      "y2":797,
 	  "refX":80.5,
 	  "refY":100,
       "srcX":4,
@@ -349,9 +331,9 @@
   
     "spriter_monster_walk_000.png":{
       "x1":516,
-      "y1":851,
+      "y1":799,
       "x2":671,
-      "y2":1051,
+      "y2":999,
 	  "refX":79,
 	  "refY":99.5,
       "srcX":5,
@@ -421,9 +403,9 @@
   
     "spriter_monster_walk_004.png":{
       "x1":442,
-      "y1":1053,
+      "y1":1001,
       "x2":578,
-      "y2":1257,
+      "y2":1205,
 	  "refX":81,
 	  "refY":102.5,
       "srcX":3,
