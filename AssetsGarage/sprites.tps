@@ -218,6 +218,14 @@
             <filename>spriter_monster_jump_001.png</filename>
             <filename>spriter_monster_jump_002.png</filename>
             <filename>village.png</filename>
+            <filename>spriter_monster_roll_001.png</filename>
+            <filename>spriter_monster_roll_002.png</filename>
+            <filename>spriter_monster_roll_003.png</filename>
+            <filename>spriter_monster_roll_004.png</filename>
+            <filename>spriter_monster_roll_005.png</filename>
+            <filename>spriter_monster_roll_006.png</filename>
+            <filename>spriter_monster_roll_007.png</filename>
+            <filename>spriter_monster_roll_000.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
