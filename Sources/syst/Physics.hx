@@ -35,7 +35,7 @@ class Physics implements System{
     
 
     for(m in mobs){
-      m.placement.vx =  310;
+      m.placement.vx =  205;
       m.placement.x+= dt * m.placement.vx;
       m.placement.rect.x=m.placement.x-10;
       m.placement.rect.y=m.placement.y;
@@ -43,7 +43,7 @@ class Physics implements System{
      }  
 
     for(p in players){
-      p.placement.vx =  300;
+      p.placement.vx =  200;
         /*if(p.player.goingLeft&& p.player.jumping==false){
           p.placement.vx =  -300;
         }
@@ -54,7 +54,8 @@ class Physics implements System{
 
         
 
-        if(p.player.jump==true && p.player.jumping==false){
+        if(p.player.jump==true && p.player.rolling==false && p.player.jumping==false){
+          p.state.setState("jump",now);
           p.player.jumping=true;
           p.placement.vy = - dt * 15500;
         }
@@ -70,23 +71,39 @@ class Physics implements System{
           p.placement.vy=0;
           p.placement.y=110;
           p.player.jumping=false;
+          p.state.setState("idle",now);
         }
+
+        
+
         p.placement.x+= dt * p.placement.vx;
         p.placement.y+= dt * p.placement.vy;
 
         p.placement.rect.x=p.placement.x-10;
         p.placement.rect.y=p.placement.y;
         p.placement.rect.width=40;
+        p.placement.rect.height=80;
 
-        if(p.player.crouch){
-          p.state.setState("crouch",now);
+        if(p.player.jumping==false && p.player.roll==true && p.player.rolling==false){
+          p.player.rolling=true;
+          p.player.distroll=0;
+          p.state.setState("roll",now);
         }
-        else if(p.player.jumping){
-          p.state.setState("jump",now);
+
+        if(p.player.rolling==true){
+
+          p.player.distroll += p.placement.vx;
+          p.placement.rect.y=10+p.placement.y;
+          p.placement.rect.height=60;
         }
-        else{
+
+        if(p.player.distroll>12000 && p.player.rolling==true){
+          p.placement.rect.y=p.placement.y;
+          p.placement.rect.height=80;
+          p.player.rolling=false;
           p.state.setState("idle",now);
         }
+
 
         //////scene
         if(sceneEntity.interlude==false){

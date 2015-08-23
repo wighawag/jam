@@ -141,10 +141,10 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
  			var context = new ys.g.Context();
  			context.save();
  			testBuffer.rewind();
-      spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,0+ (playerPlacement.x),0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
+      spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,30+ (playerPlacement.x)*49/50,0, 0, 1.1*FOCUS_WIDTH, 1.1*FOCUS_HEIGHT, true);
       /*spriting.writeToBuffer(testBuffer,context,"prarie", "idle",elapsedTime, FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
       spriting.writeToBuffer(testBuffer,context,"castle", "idle",elapsedTime, 2*FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);*/
-      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,0+ ((FOCUS_WIDTH*4)-600), 160, 0, FOCUS_WIDTH*8, 56, false);
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,0+ ((FOCUS_WIDTH*8)-600), 160, 0, FOCUS_WIDTH*16, 56, false);
      
       for(sprite in sprites){
         var placement = sprite.placement;
@@ -165,7 +165,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         /*program.set_ambientColor(0.1,0.1,0.1,0.1);*/
         program.set_ambientColor(0.25,0.25,0.25,0.25);
         if(playerPlacement != null){
-          var lightPosVec = new Vector3(80+ (playerPlacement.x),-30,0.075);
+          var lightPosVec = new Vector3(80+ (playerPlacement.x)*49/50,-30,0.075);
           /*var lightPosVec = new Vector3(playerPlacement.x+30,playerPlacement.y-30,0.075);*/
           var newLightPosVec = camera.toBufferCoordinates(lightPosVec);
 
