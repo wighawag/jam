@@ -227,6 +227,7 @@
             <filename>spriter_monster_roll_006.png</filename>
             <filename>spriter_monster_roll_007.png</filename>
             <filename>spriter_monster_roll_000.png</filename>
+            <filename>village2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

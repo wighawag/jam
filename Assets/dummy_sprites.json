@@ -8,7 +8,8 @@
 	}},"village":{"idle":{
     "defaultMsDuration":100,
     "frames":[
-        {"textureCutOut":"village.png"}		
+        {"textureCutOut":"village.png"},
+		{"textureCutOut":"village2.png"}		
 	  ]
 	}},"night":{"idle":{
     "defaultMsDuration":100,
