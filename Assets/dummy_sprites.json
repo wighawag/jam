@@ -5,6 +5,11 @@
     "frames":[
         {"textureCutOut":"castle.jpg"}		
 	  ]
+	}},"village":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"village.png"}		
+	  ]
 	}},"night":{"idle":{
     "defaultMsDuration":100,
     "frames":[

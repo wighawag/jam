@@ -212,6 +212,12 @@
             <filename>spriter_monster_walk_006.png</filename>
             <filename>spriter_monster_walk_007.png</filename>
             <filename>spriter_monster_walk_008.png</filename>
+            <filename>spriter_monster_crouch_000.png</filename>
+            <filename>spriter_monster_crouch_001.png</filename>
+            <filename>spriter_monster_jump_000.png</filename>
+            <filename>spriter_monster_jump_001.png</filename>
+            <filename>spriter_monster_jump_002.png</filename>
+            <filename>village.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
