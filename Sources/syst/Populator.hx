@@ -28,9 +28,9 @@ class Populator implements System{
 
 	model.addEntity([new Placement(0,120,200,200), new ColorComp(Color.Black)]);
 
-    model.addEntity([new Placement(	0,110,60,80), new State("idle", now), new Asset("player"), new Player(200)]);
+    model.addEntity([new Placement(	-500,110,60,80), new State("idle", now), new Asset("player"), new Player(200)]);
 
-   
+
 
    ////////////////////////////////////roc
    model.addEntity([new Placement(100,140,40,40), new State("idle", now), new Asset("roc"), new Roc()]);
@@ -73,7 +73,7 @@ class Populator implements System{
    			model.addEntity([new Placement(180+i*120,160,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
    		}
    	}
-   	 model.addEntity([new Placement(-210,110,150,150), new State("idle", now), new Asset("village"), new Mob(200,false,false)]);
+   	 model.addEntity([new Placement(-210 - 500,110,150,150), new State("idle", now), new Asset("village"), new Mob(200,false,false)]);
 
 	}
 

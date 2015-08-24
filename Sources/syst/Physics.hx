@@ -90,7 +90,7 @@ class Physics implements System{
 
 
 
-        if(p.player.jump==true && p.player.rolling==false && p.player.jumping==false && pit==false){
+        if(now > 0.5 && p.player.jump==true && p.player.rolling==false && p.player.jumping==false && pit==false){
           p.state.setState("jump",now);
           p.player.jumping=true;
           p.placement.vy = - dt * 15500;
@@ -166,15 +166,21 @@ class Physics implements System{
 
       for(m in mobs){
 
-      if(playerPlacement.x>12200 || playerPlacement.y>150){m.placement.vx =  0;}
-      else{m.placement.vx =  m.mob.speed;}
+      if(playerPlacement.x>12200 || playerPlacement.y>150){
+        m.placement.vx =  0;
+      }else{
+        m.placement.vx =  m.mob.speed;
+      }
       m.placement.x+= dt * m.placement.vx;
       m.placement.rect.x=m.placement.x-10;
       m.placement.rect.y=m.placement.y;
       m.placement.rect.width=130;
-      m.mob.timelaunch-=1;
+      if(m.mob.timelaunch > 0){
+          m.mob.timelaunch-=1;
+      }
 
-      if(m.mob.proj1==false && m.mob.proj2==false && m.mob.timelaunch==0){
+
+      if(m.placement.x >= -210 && m.mob.proj1==false && m.mob.proj2==false && m.mob.timelaunch==0){
         var rand=Std.int(Math.random()*2);
         if(rand==0){
           m.mob.timelaunch=80;
