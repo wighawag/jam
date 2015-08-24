@@ -233,6 +233,7 @@
             <filename>piece003.png</filename>
             <filename>piece001.png</filename>
             <filename>piece002.png</filename>
+            <filename>pann.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -31,6 +31,11 @@
     "frames":[
         {"textureCutOut":"roc.png"}		
 	  ]
+	}},"panneau":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"pann.png"}		
+	  ]
 	}},"greengrass":{"idle":{
     "defaultMsDuration":100,
     "frames":[
@@ -58,7 +63,8 @@
     "frames":[
         {"textureCutOut":"piece001.png"},
 		{"textureCutOut":"piece002.png"},
-		{"textureCutOut":"piece003.png"}
+		{"textureCutOut":"piece003.png"},
+		{"textureCutOut":"piece002.png"}
 	  ]
 	}},"player":{"idle":{
     "defaultMsDuration":100,

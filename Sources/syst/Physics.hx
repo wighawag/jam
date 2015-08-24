@@ -51,7 +51,7 @@ class Physics implements System{
 
      for(j in projs){
       j.placement.x+= dt * j.proj.speed;
-      j.placement.rect.x=j.placement.x;
+      j.placement.rect.x=j.placement.x-10;
       j.placement.rect.y=j.placement.y;
       j.proj.lifetime-=1;
       if(j.proj.lifetime==0){model.removeEntity(j);}
@@ -115,9 +115,9 @@ class Physics implements System{
         p.placement.x+= dt * p.placement.vx;
         p.placement.y+= dt * p.placement.vy;
 
-        p.placement.rect.x=p.placement.x-10;
+        p.placement.rect.x=p.placement.x-5;
         p.placement.rect.y=p.placement.y;
-        p.placement.rect.width=40;
+        p.placement.rect.width=36;
         p.placement.rect.height=80;
 
         if(p.player.jumping==false && p.player.roll==true && p.player.rolling==false && pit==false){

@@ -43,7 +43,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 	var backgroundBuffer : Buffer<{pos:Vec3}>;
 	var testBuffer : Buffer<{position:Vec3,alpha:Float,texCoords:Vec2}>;
 	var viewport : Viewport = new Viewport({type : Fill, position: Center});
-	var camera : OrthoCamera = new OrthoCamera();
+	var camera : OrthoCamera = new OrthoCamera(FOCUS_WIDTH,FOCUS_HEIGHT);
 
   var spriting : Sprites;
 
@@ -79,8 +79,8 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
   public function render(elapsedTime : Float, frame:Framebuffer, input : Input) : Void{
 
-    viewport.ensureSize(frame.width, frame.height);
- 		camera.handleViewport(viewport);
+    /*viewport.ensureSize(frame.width, frame.height);
+ 		camera.handleViewport(viewport);*/
     /*var sceneEntity : Scene = null;
     for(p in scenes){
       sceneEntity = p.scene;
@@ -101,10 +101,13 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       break;
     }
     if(playerPlacement != null){
-        camera.setFocus(playerPlacement.x - FOCUS_WIDTH/2, - FOCUS_HEIGHT/2,FOCUS_WIDTH, FOCUS_HEIGHT);
+         camera.centerOn(playerPlacement.x,0);
     }else{
-      trace("no playerPlacement");
+      camera.centerOn(0,0);
+      /*trace("no playerPlacement");*/
     }
+    viewport.ensureSize(frame.width, frame.height);
+     camera.handleViewport(viewport);
 
     /*if(sceneEntity.interlude==false && sceneEntity.gameover==false){*/
 
@@ -251,7 +254,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         var placement = sprite.placement;
         if(placement.contact==true){g2.color = Color.Red;}
         else{g2.color = Color.Blue;}
-        /*g2.drawRect(placement.rect.x-placement.rect.width/2 , placement.rect.y-placement.rect.height/2, placement.rect.width, placement.rect.height);*/
+        g2.drawRect(placement.rect.x-placement.rect.width/2 , placement.rect.y-placement.rect.height/2, placement.rect.width, placement.rect.height);
       }
       g2.popTransformation();
      });
@@ -261,13 +264,13 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
       g2.color = Color.Yellow;
       g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
-      g2.drawString("PIECE",5,5);
+      //g2.drawString("PIECE",5,5);
       g2.drawString("COLLISION",5,25);
       g2.drawString("HIGHSCORE",5,45);
 
       g2.drawString(""+player.contactpiece+"",200,5);
-      g2.drawString(""+player.contactnumber+"",200,25);
-      g2.drawString(""+(player.contactnumber/5*1000+player.contactpiece*50)+"",200,45);
+      //g2.drawString(""+player.contactnumber+"",200,25);
+      //g2.drawString(""+(1-p.player.contactnumber/5)*1000+p.player.contactpiece*50+"",200,45);
 
       if(elapsedTime < 1){
         g2.drawString("Monster!",300,355);

@@ -30,6 +30,8 @@ class Populator implements System{
 
     model.addEntity([new Placement(	-500,110,60,80), new State("idle", now), new Asset("player"), new Player(200)]);
 
+    model.addEntity([new Placement(	11500,90,60,30), new State("idle", now), new Asset("panneau")]);
+
 
 
    ////////////////////////////////////roc

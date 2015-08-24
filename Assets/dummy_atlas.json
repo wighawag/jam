@@ -221,6 +221,24 @@
 	  "cornerOffsetY":97
     },
   
+    "pann.png":{
+      "x1":606,
+      "y1":1550,
+      "x2":734,
+      "y2":1653,
+	  "refX":64,
+	  "refY":51.5,
+      "srcX":0,
+      "srcY":0,
+	  "srcWidth":128,
+      "srcHeight":103,
+      "originalWidth" :128,
+      "originalHeight" :128,
+      "rotated":false,
+	  "cornerOffsetX":0,
+	  "cornerOffsetY":0
+    },
+  
     "piece001.png":{
       "x1":134,
       "y1":1695,
