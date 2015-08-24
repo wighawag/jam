@@ -151,15 +151,24 @@ class Physics implements System{
 
         //////scene
         if(_session.interlude==false){
-          _session.highScore=( (1-p.player.contactnumber/5)*1000+p.player.contactpiece*50);
+          _session.highScore=( Std.int((1-p.player.contactnumber/10)*100+p.player.contactpiece*50));
 
           if(p.placement.x>12500){
           _session.screen=2;
           _session.winning=true;
+          _session.interlude=true;
           p.placement.x=12600;
+          
+            /*for(m in rocs){model.removeEntity(m);}
+              for(m in pieces){model.removeEntity(m);}
+                for(m in projs){model.removeEntity(m);}*/
+
           }
           if(p.player.life==0){
             _session.gameover=true;
+            /*for(m in rocs){model.removeEntity(m);}
+              for(m in pieces){model.removeEntity(m);}
+                for(m in projs){model.removeEntity(m);}*/
           }
         }
       }

@@ -3,7 +3,7 @@
   "sprites":{"castle":{"idle":{
     "defaultMsDuration":100,
     "frames":[
-        {"textureCutOut":"castle.jpg"}		
+        {"textureCutOut":"castle2.png"}		
 	  ]
 	}},"village":{"idle":{
     "defaultMsDuration":200,
@@ -14,12 +14,27 @@
 	}},"night":{"idle":{
     "defaultMsDuration":100,
     "frames":[
-        {"textureCutOut":"night.jpg"}		
+        {"textureCutOut":"night2.png"}		
 	  ]
 	}},"spear":{"idle":{
     "defaultMsDuration":100,
     "frames":[
         {"textureCutOut":"spear.png"}		
+	  ]
+	}},"wall":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"wall.png"}		
+	  ]
+	}},"ground":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"ground.png"}		
+	  ]
+	}},"head":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"head.png"}		
 	  ]
 	}},"fire":{"idle":{
     "defaultMsDuration":100,
@@ -41,11 +56,6 @@
     "frames":[
         {"textureCutOut":"greengrass3.blend_texture.png"}		
 	  ]
-	}},"prarie":{"idle":{
-    "defaultMsDuration":100,
-    "frames":[
-        {"textureCutOut":"prarie.jpg"}		
-	  ]
 	}},"dummy":{"idle":{
     "defaultMsDuration":100,
     "frames":[
@@ -59,7 +69,7 @@
 		{"textureCutOut":"obj_Walk007.png"}
 	  ]
 	}},"piece":{"idle":{
-    "defaultMsDuration":300,
+    "defaultMsDuration":200,
     "frames":[
         {"textureCutOut":"piece001.png"},
 		{"textureCutOut":"piece002.png"},

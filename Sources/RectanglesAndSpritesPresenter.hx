@@ -158,10 +158,14 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
  			context.save();
  			testBuffer.rewind();
       spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,90+ (playerPlacement.x)*99/100,0, 0, 1.3*FOCUS_WIDTH, 1.3*FOCUS_HEIGHT, true);
-      /*spriting.writeToBuffer(testBuffer,context,"prarie", "idle",elapsedTime, FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
-      spriting.writeToBuffer(testBuffer,context,"castle", "idle",elapsedTime, 2*FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);*/
-      for(i in 0...206){
-      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,-300+i*60, 160, 0, 60, 67, false);
+      for(i in 0...Std.int(player.life)){
+        spriting.writeToBuffer(testBuffer,context,"head", "idle",elapsedTime,280+playerPlacement.x-i*30, -180, 0, 30, 30, false);
+        }
+       /* spriting.writeToBuffer(testBuffer,context,"piece", "idle",elapsedTime,-280+playerPlacement.x, -180, 0, 30, 30, true);*/
+       spriting.writeToBuffer(testBuffer,context,"panneau", "idle",elapsedTime,11500, 100, 0, 128, 128, true);
+        
+      for(i in 0...216){
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,-900+i*60, 160, 0, 60, 67, false);
      }
      for(i in 0...20){
       spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,12200+i*60, 160, 0, 60, 67, false);
@@ -254,7 +258,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         var placement = sprite.placement;
         if(placement.contact==true){g2.color = Color.Red;}
         else{g2.color = Color.Blue;}
-        g2.drawRect(placement.rect.x-placement.rect.width/2 , placement.rect.y-placement.rect.height/2, placement.rect.width, placement.rect.height);
+        /*g2.drawRect(placement.rect.x-placement.rect.width/2 , placement.rect.y-placement.rect.height/2, placement.rect.width, placement.rect.height);*/
       }
       g2.popTransformation();
      });
@@ -264,13 +268,8 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
       g2.color = Color.Yellow;
       g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
-      //g2.drawString("PIECE",5,5);
-      g2.drawString("COLLISION",5,25);
-      g2.drawString("HIGHSCORE",5,45);
-
-      g2.drawString(""+player.contactpiece+"",200,5);
-      //g2.drawString(""+player.contactnumber+"",200,25);
-      //g2.drawString(""+(1-p.player.contactnumber/5)*1000+p.player.contactpiece*50+"",200,45);
+      g2.drawString("Score:",5,5);
+      g2.drawString(""+Std.int((1-player.contactnumber/10)*100+player.contactpiece*50)+"",100,5);
 
       if(elapsedTime < 1){
         g2.drawString("Monster!",300,355);

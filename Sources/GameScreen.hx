@@ -41,7 +41,7 @@ class GameScreen implements Screen {
 
 	public function update(elapsedTime : Float, dt : Float, input : Input) : Bool{
     _model.update(elapsedTime, dt);
-		return _session.gameover;
+		return _session.gameover || _session.winning;
 	}
 
 	public function render(elapsedTime : Float, frame:Framebuffer, input : Input) {
