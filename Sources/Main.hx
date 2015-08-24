@@ -8,6 +8,6 @@ import syst.Populator;
 
 class Main {
 	public static function main() {
-		App.start("YS_test",new Shell([new LoadingScreen(), new TestScreen(), new GameScreen()]));
+		App.start("YS_test",new Shell([new LoadingScreen()],[new GameScreen(), new GameOverScreen()]));
 	}
 }

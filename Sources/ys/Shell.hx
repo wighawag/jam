@@ -18,8 +18,14 @@ class Shell implements Application{
   var _interval : Float = 0.016;
   var _accumulatedTime : Float = 0;
 
-  public function new (screens : Array<Screen>){
-		this.screens = screens;
+  var _screenToRemoveOnStart : Map<Screen,Bool>;
+
+  public function new (startScreens :Array<Screen>, loopingScreens : Array<Screen>){
+    _screenToRemoveOnStart = new Map();
+    for(screen in startScreens){
+      _screenToRemoveOnStart.set(screen,true);
+    }
+		this.screens = startScreens.concat(loopingScreens);
 	}
 
   public function init(now : Float, input : Input){
@@ -91,6 +97,10 @@ class Shell implements Application{
   function enterScreen(now : Float, input : Input){
     startTime = now;
     currentScreen = screens[currentIndex];
+    if(_screenToRemoveOnStart[currentScreen]){
+      screens.remove(currentScreen);
+      _screenToRemoveOnStart.remove(currentScreen);
+    }
     currentScreen.enter(input);
   }
 }

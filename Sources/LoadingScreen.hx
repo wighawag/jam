@@ -46,10 +46,9 @@ class LoadingScreen implements Screen {
 		frame.usingG2({
 			g2.clear();
 			g2.color = Color.Green;
-			g2.drawLine(0,0,frame.width,frame.height);
 
-			g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
-			g2.drawString("Loading...",frame.width/2,frame.height/2);
+			g2.font = Loader.the.loadFont("GrapeSoda", new FontStyle(false, false, false), 72);
+			g2.drawString("Loading",frame.width/2 - 200 ,frame.height/2 - 30);
 
 		 });
   }

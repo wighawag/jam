@@ -33,6 +33,12 @@
 			"file": "arial.ttf",
 			"size": 24,
 			"name": "Arial"
+		},
+		{
+			"type": "font",
+			"file": "GrapeSoda.ttf",
+			"size": 72,
+			"name": "GrapeSoda"
 		}
 	],
 	"rooms": [
@@ -49,7 +55,8 @@
 		},
 		{
 			"assets": [
-				"Arial24.kravur"
+				"Arial24.kravur",
+				"GrapeSoda72.kravur"
 			],
 			"name": "loading",
 			"neighbours": [],

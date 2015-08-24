@@ -29,6 +29,9 @@ import khage.g4.Viewport;
 
 import kha.math.Matrix4;
 
+import kha.Loader;
+import kha.FontStyle;
+
 class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
   inline static var FOCUS_WIDTH = 600;
@@ -240,6 +243,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
     frame.usingG2({
       g2.pushTransformation(camera.g2Transformation);
       g2.color = Color.Green;
+      g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
       g2.drawString("PIECE",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+10);
       g2.drawString("COLLISION",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+35);
       g2.drawString("SPEED",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+60);
