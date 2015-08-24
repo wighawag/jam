@@ -56,6 +56,7 @@ class Collision implements System{
       			if(Util.AABB(playerPlacement.rect,projPlacement.rect)==true ){
       				p.player.contactnumber+=1;
              /* p.player.speed-=1;*/
+              p.player.life-=1;
       				p.player.contact=true;
       				p.placement.contact=true;
       				/*j.placement.contact=true;*/

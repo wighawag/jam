@@ -9,13 +9,14 @@ class Player{
    public var roll : Bool;
   public var rolling : Bool;
   public var distroll:Float;
-  public var life : Float=1;
+  public var life : Float=10;
   public var speed:Float;
   public var maxspeed:Float;
   public var contact:Bool;
   public var contactnumber:Float=0;
   public var contactroc:Bool=false;
   public var contactpiece:Float=0;
+  public var fall : Bool;
 
   public function new(speed){
     reset();
@@ -26,6 +27,7 @@ class Player{
     this.speed=speed;
     maxspeed=speed;
     contact=false;
+    fall=false;
   }
 
   public function reset(){

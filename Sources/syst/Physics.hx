@@ -33,6 +33,7 @@ class Physics implements System{
   var pieces : Entities<{placement : Placement, piece :Piece}>;
   var rocs : Entities<{placement : Placement, roc :Roc}>;
   public var sceneSys:SceneSys;
+  public var pit:Bool;
 
   public function new(sceneSys:SceneSys){
     this.sceneSys = sceneSys;
@@ -48,8 +49,127 @@ class Physics implements System{
     }*/
     
 
-    for(m in mobs){
-      m.placement.vx =  m.mob.speed;
+    
+
+     for(j in projs){
+      j.placement.x+= dt * j.proj.speed;
+      j.placement.rect.x=j.placement.x;
+      j.placement.rect.y=j.placement.y;
+      j.proj.lifetime-=1;
+      if(j.proj.lifetime==0){model.removeEntity(j);}
+      /*if(j.proj.contact==true){model.removeEntity(j);}*/
+
+      } 
+
+
+    for(p in players){
+
+      if((p.placement.x-20)>12030 && (p.placement.x-20)<12170){pit=true;}
+      else{pit=false;}
+
+      if(pit==true && p.placement.y>110){
+        p.player.fall=true;}
+
+
+      if(p.player.fall==true){p.placement.vx =0;}    
+      else{p.placement.vx =  p.player.speed;}
+
+      if(pit==true && p.placement.y>200 && p.player.fall==true){
+        p.player.life=0;
+        }
+      /*if(p.player.speed>p.player.maxspeed){p.player.speed=p.player.maxspeed;}
+      if(p.player.contactroc==true){p.placement.vx =  p.player.speed/2;}
+      else{p.placement.vx =  p.player.speed;}*/
+      
+      
+        /*if(p.player.goingLeft&& p.player.jumping==false){
+          p.placement.vx =  -300;
+        }
+        else if(p.player.goingRight&& p.player.jumping==false){
+          p.placement.vx =  300;
+        }
+        else if( p.player.jumping==false){ p.placement.vx =0;}*/
+
+        
+
+        if(p.player.jump==true && p.player.rolling==false && p.player.jumping==false && pit==false){
+          p.state.setState("jump",now);
+          p.player.jumping=true;
+          p.placement.vy = - dt * 15500;
+        }
+
+        if(p.player.jumping==true || pit==true){
+          p.placement.vy += dt * 500;
+          /*if(p.placement.vx>=10){ p.placement.vx += dt * 200;}
+          else if(p.placement.vx<=-10){}
+          else{ } */
+        }
+
+        if(p.placement.y>110 && p.player.jumping==true && pit==false ){
+          p.placement.vy=0;
+          p.placement.y=110;
+          p.player.jumping=false;
+          p.state.setState("idle",now);
+        }
+
+        
+
+        p.placement.x+= dt * p.placement.vx;
+        p.placement.y+= dt * p.placement.vy;
+
+        p.placement.rect.x=p.placement.x-10;
+        p.placement.rect.y=p.placement.y;
+        p.placement.rect.width=40;
+        p.placement.rect.height=80;
+
+        if(p.player.jumping==false && p.player.roll==true && p.player.rolling==false && pit==false){
+          p.player.rolling=true;
+          p.player.distroll=0;
+          p.state.setState("roll",now);
+        }
+
+        if(p.player.rolling==true && pit==false){
+          p.placement.y=120;
+          p.player.distroll += p.placement.vx;
+          p.placement.rect.y=10+p.placement.y;
+          p.placement.rect.height=55;
+        }
+
+        if(p.player.distroll>12000 && p.player.rolling==true && pit==false){
+          p.placement.y=110;
+          p.placement.rect.y=p.placement.y;
+          p.placement.rect.height=80;
+          p.player.rolling=false;
+          p.state.setState("idle",now);
+        }
+
+        playerPlacement=p.placement;
+
+
+
+        
+
+
+
+        //////scene
+        if(sceneSys.interlude==false){
+          sceneSys.highScore=( (1-p.player.contactnumber/5)*1000+p.player.contactpiece*50);
+
+          if(p.placement.x>12500){
+          sceneSys.screen=2;
+          sceneSys.winning=true;
+          p.placement.x=12600;
+          }
+          if(p.player.life==0){
+            sceneSys.gameover=true;
+          }
+        }
+      }
+
+      for(m in mobs){
+
+      if(playerPlacement.x>12200 || playerPlacement.y>150){m.placement.vx =  0;}
+      else{m.placement.vx =  m.mob.speed;}
       m.placement.x+= dt * m.placement.vx;
       m.placement.rect.x=m.placement.x-10;
       m.placement.rect.y=m.placement.y;
@@ -68,99 +188,6 @@ class Physics implements System{
       }
      } 
 
-     for(j in projs){
-      j.placement.x+= dt * j.proj.speed;
-      j.placement.rect.x=j.placement.x;
-      j.placement.rect.y=j.placement.y;
-      j.proj.lifetime-=1;
-      if(j.proj.lifetime==0){model.removeEntity(j);}
-      /*if(j.proj.contact==true){model.removeEntity(j);}*/
-
-      } 
-
-
-    for(p in players){
-      /*if(p.player.speed>p.player.maxspeed){p.player.speed=p.player.maxspeed;}
-      if(p.player.contactroc==true){p.placement.vx =  p.player.speed/2;}
-      else{p.placement.vx =  p.player.speed;}*/
-
-      p.placement.vx =  p.player.speed;
-      
-        /*if(p.player.goingLeft&& p.player.jumping==false){
-          p.placement.vx =  -300;
-        }
-        else if(p.player.goingRight&& p.player.jumping==false){
-          p.placement.vx =  300;
-        }
-        else if( p.player.jumping==false){ p.placement.vx =0;}*/
-
-        
-
-        if(p.player.jump==true && p.player.rolling==false && p.player.jumping==false){
-          p.state.setState("jump",now);
-          p.player.jumping=true;
-          p.placement.vy = - dt * 15500;
-        }
-
-        if(p.player.jumping){
-          p.placement.vy += dt * 500;
-          /*if(p.placement.vx>=10){ p.placement.vx += dt * 200;}
-          else if(p.placement.vx<=-10){}
-          else{ } */
-        }
-
-        if(p.placement.y>110 && p.player.jumping==true){
-          p.placement.vy=0;
-          p.placement.y=110;
-          p.player.jumping=false;
-          p.state.setState("idle",now);
-        }
-
-        
-
-        p.placement.x+= dt * p.placement.vx;
-        p.placement.y+= dt * p.placement.vy;
-
-        p.placement.rect.x=p.placement.x-10;
-        p.placement.rect.y=p.placement.y;
-        p.placement.rect.width=40;
-        p.placement.rect.height=80;
-
-        if(p.player.jumping==false && p.player.roll==true && p.player.rolling==false){
-          p.player.rolling=true;
-          p.player.distroll=0;
-          p.state.setState("roll",now);
-        }
-
-        if(p.player.rolling==true){
-          p.placement.y=120;
-          p.player.distroll += p.placement.vx;
-          p.placement.rect.y=10+p.placement.y;
-          p.placement.rect.height=55;
-        }
-
-        if(p.player.distroll>12000 && p.player.rolling==true){
-          p.placement.y=110;
-          p.placement.rect.y=p.placement.y;
-          p.placement.rect.height=80;
-          p.player.rolling=false;
-          p.state.setState("idle",now);
-        }
-
-        playerPlacement=p.placement;
-        //////scene
-        if(sceneSys.interlude==false){
-          sceneSys.highScore=(p.player.contactnumber/5*1000+p.player.contactpiece*50);
-
-          if(p.placement.x>11500){
-          sceneSys.screen=2;
-          sceneSys.interlude=true;
-          }
-          if(p.player.life==0){
-            sceneSys.gameover=true;
-          }
-        }
-      }
       for(pi in pieces){ if(pi.placement.x+100<playerPlacement.x){model.removeEntity(pi);}}
 
   }
