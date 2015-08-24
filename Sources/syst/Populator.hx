@@ -28,7 +28,7 @@ class Populator implements System{
 
 	model.addEntity([new Placement(0,120,200,200), new ColorComp(Color.Black)]);
 
-    model.addEntity([new Placement(0,110,60,80), new State("idle", now), new Asset("player"), new Player(200)]);
+    model.addEntity([new Placement(	0,110,60,80), new State("idle", now), new Asset("player"), new Player(200)]);
 
    
 

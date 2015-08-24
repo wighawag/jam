@@ -159,9 +159,13 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,90+ (playerPlacement.x)*99/100,0, 0, 1.3*FOCUS_WIDTH, 1.3*FOCUS_HEIGHT, true);
       /*spriting.writeToBuffer(testBuffer,context,"prarie", "idle",elapsedTime, FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
       spriting.writeToBuffer(testBuffer,context,"castle", "idle",elapsedTime, 2*FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);*/
-      for(i in 0...200){
-      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,-300+i*59, 160, 0, 60, 60, false);
+      for(i in 0...206){
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,-300+i*60, 160, 0, 60, 67, false);
      }
+     for(i in 0...20){
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,12200+i*60, 160, 0, 60, 67, false);
+     }
+     
       for(sprite in sprites){
         var placement = sprite.placement;
         var state = sprite.state;
@@ -227,6 +231,14 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
     frame.usingG2({
       g2.pushTransformation(camera.g2Transformation);
+      /*g2.color = Color.Red;
+      g2.fillRect(12200, 50,50, 50);
+
+      g2.color = Color.Red;
+      g2.fillRect(12030, 110,1, 50);
+
+      g2.color = Color.Red;
+      g2.fillRect(12170, 110,1, 50);*/
 
         g2.color = Color.Black;
         g2.fillRect(-FOCUS_WIDTH*3/2+ (playerPlacement.x), -FOCUS_HEIGHT/2,FOCUS_WIDTH, FOCUS_HEIGHT);
@@ -262,6 +274,27 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       
      });
 
+   if(player.life==0){
+    frame.usingG2({
+
+      g2.color = Color.Green;
+      g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
+      g2.drawString("GameOver",frame.width/2,frame.height/2);
+
+
+     });
+    }
+
+    if(playerPlacement.x>12500){
+    frame.usingG2({
+
+      g2.color = Color.Green;
+      g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
+      g2.drawString("You Win",frame.width/2,frame.height/2);
+
+
+     });
+    }
 
   /*}
   else if(sceneEntity.interlude==true && sceneEntity.gameover==false){

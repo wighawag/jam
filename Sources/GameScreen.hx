@@ -27,7 +27,7 @@ class GameScreen implements Screen {
 	}
 
   public function enter(input : Input) {
-    _model = new Model([new Populator(), new Controller(input), new Physics(new SceneSys()), new Collision()]);
+    _model = new Model([new Populator(), new Controller(input),new Physics(new SceneSys()) , new Collision()]);
     _presenter = new RectanglesAndSpritesPresenter(Sprites.load("dummy_sprites.json"));
     _model.setupPresenter(_presenter);
 
@@ -41,7 +41,7 @@ class GameScreen implements Screen {
 
 	public function update(elapsedTime : Float, dt : Float, input : Input) : Bool{
     _model.update(elapsedTime, dt);
-		return false;
+		return false; //_model._systems.get(Physics).sceneSys.gameover;
 	}
 
 	public function render(elapsedTime : Float, frame:Framebuffer, input : Input) {
