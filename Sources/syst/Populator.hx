@@ -73,7 +73,7 @@ class Populator implements System{
    			model.addEntity([new Placement(180+i*120,160,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
    		}
    	}
-   	 model.addEntity([new Placement(-300,110,150,150), new State("idle", now), new Asset("village"), new Mob(205,false,false)]);
+   	 model.addEntity([new Placement(-210,110,150,150), new State("idle", now), new Asset("village"), new Mob(200,false,false)]);
 
 	}
 

@@ -12,6 +12,7 @@ import syst.Populator;
 import syst.Controller;
 import syst.Physics;
 import syst.Collision;
+import syst.SceneSys;
 
 import kha.audio1.Audio;
 import kha.Loader;
@@ -26,7 +27,7 @@ class GameScreen implements Screen {
 	}
 
   public function enter(input : Input) {
-    _model = new Model([new Populator(), new Controller(input), new Physics(), new Collision()]);
+    _model = new Model([new Populator(), new Controller(input), new Physics(new SceneSys()), new Collision()]);
     _presenter = new RectanglesAndSpritesPresenter(Sprites.load("dummy_sprites.json"));
     _model.setupPresenter(_presenter);
 

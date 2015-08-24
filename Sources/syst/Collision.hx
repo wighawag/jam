@@ -55,7 +55,7 @@ class Collision implements System{
  	
       			if(Util.AABB(playerPlacement.rect,projPlacement.rect)==true ){
       				p.player.contactnumber+=1;
-              p.player.speed-=1;
+             /* p.player.speed-=1;*/
       				p.player.contact=true;
       				p.placement.contact=true;
       				/*j.placement.contact=true;*/
@@ -87,7 +87,7 @@ class Collision implements System{
   
             if(Util.AABB(playerPlacement.rect,pi.placement.rect)==true){
               p.player.contactpiece+=1;
-              p.player.speed+=0.1;
+              /*p.player.speed+=0.1;*/
               p.player.contact=true;
               p.placement.contact=true;
               model.removeEntity(pi);

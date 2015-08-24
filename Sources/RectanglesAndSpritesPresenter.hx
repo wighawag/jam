@@ -2,7 +2,7 @@ package;
 
 import kha.Framebuffer;
 
-using Khage;
+
 import kha.Color;
 import cosmos.Entities;
 import comp.Placement;
@@ -52,7 +52,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
   var mobs : Entities<{placement:Placement, mob: Mob}>;
   var sprites : Entities<{placement:Placement, state: State, asset : Asset}>;
   var players : Entities<{placement:Placement,player:Player}>; //the focus should probably done in the model ? maybe an entity with a component focus?
-  var scenes : Entities<{scene:Scene}>;
+  /*var scenes : Entities<{scene:Scene}>;*/
 
   public function new(spriting : Sprites){
       this.spriting = spriting;
@@ -79,11 +79,11 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
   public function render(elapsedTime : Float, frame:Framebuffer, input : Input) : Void{
 
-    var sceneEntity : Scene = null;
+    /*var sceneEntity : Scene = null;
     for(p in scenes){
       sceneEntity = p.scene;
       break;
-    }
+    }*/
 
     var mobPlacement : Placement = null;
     for(m in mobs){
@@ -104,7 +104,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       camera.centerOn(0,0);
     }
 
-    if(sceneEntity.interlude==false && sceneEntity.gameover==false){
+    /*if(sceneEntity.interlude==false && sceneEntity.gameover==false){*/
 
     viewport.ensureSize(frame.width, frame.height);
  		camera.handleViewport(viewport);
@@ -160,7 +160,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       /*spriting.writeToBuffer(testBuffer,context,"prarie", "idle",elapsedTime, FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
       spriting.writeToBuffer(testBuffer,context,"castle", "idle",elapsedTime, 2*FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);*/
       for(i in 0...200){
-      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,-300+i*60, 160, 0, 60, 60, false);
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,-300+i*59, 160, 0, 60, 60, false);
      }
       for(sprite in sprites){
         var placement = sprite.placement;
@@ -192,7 +192,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         program.set_ambientColor2(0.4,0.4,0.4,0.4);
 
         if(playerPlacement != null){
-          var lightPosVec = new Vector3(80+ (playerPlacement.x)*99/100,-30,0.075);
+          var lightPosVec = new Vector3(90+80+ (playerPlacement.x)*99/100,-30,0.075);
           /*var lightPosVec = new Vector3(playerPlacement.x+30,playerPlacement.y-30,0.075);*/
           var newLightPosVec = camera.toBufferCoordinates(lightPosVec);
 
@@ -248,22 +248,22 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
 
     frame.usingG2({
-      g2.pushTransformation(camera.g2Transformation);
-      g2.color = Color.Green;
+      
+      g2.color = Color.Yellow;
       g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
-      g2.drawString("PIECE",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+10);
-      g2.drawString("COLLISION",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+35);
-      g2.drawString("SPEED",playerPlacement.x-0.5*FOCUS_WIDTH,-FOCUS_HEIGHT/2+60);
+      g2.drawString("PIECE",5,5);
+      g2.drawString("COLLISION",5,25);
+      g2.drawString("HIGHSCORE",5,45);
 
-      g2.drawString(""+player.contactpiece+"",playerPlacement.x-0.5*FOCUS_WIDTH+200,-FOCUS_HEIGHT/2+10);
-
-      g2.drawString(""+player.contactnumber+"",playerPlacement.x-0.5*FOCUS_WIDTH+200,-FOCUS_HEIGHT/2+35);
-      g2.drawString(""+player.speed+"",playerPlacement.x-0.5*FOCUS_WIDTH+200,-FOCUS_HEIGHT/2+60);
-      g2.popTransformation();
+      g2.drawString(""+player.contactpiece+"",200,5);
+      g2.drawString(""+player.contactnumber+"",200,25);
+      g2.drawString(""+(player.contactnumber/5*1000+player.contactpiece*50)+"",200,45);
+      
+      
      });
 
 
-  }
+  /*}
   else if(sceneEntity.interlude==true && sceneEntity.gameover==false){
     frame.usingG2({
       g2.clear();
@@ -273,7 +273,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
      });
   }
-  else /*if(sceneEntity.interlude==false && sceneEntity.gameover==true)*/{
+  else if(sceneEntity.interlude==false && sceneEntity.gameover==true){
     frame.usingG2({
       g2.clear();
       g2.color = Color.Green;
@@ -283,7 +283,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
      });
   }
-
+*/
 
   }
 }
