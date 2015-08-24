@@ -28,14 +28,13 @@ import mathtool.Util;
 
 class Collision implements System{
 
-  var players : Entities<{placement : Placement,state:State, player : Player}>;
+  var players : Entities<{placement : Placement, player : Player}>;
   var mobs : Entities<{placement : Placement, mob : Mob}>;
     var projs : Entities<{placement : Placement, proj :Projectile}>;
     var pieces : Entities<{placement : Placement, piece :Piece}>;
     var rocs : Entities<{placement : Placement, roc :Roc}>;
 
 	public function update(now : Float, dt : Float){
-
 		var mobPlacement : Placement = null;
     	for(m in mobs){
       		mobPlacement = m.placement;
@@ -45,8 +44,6 @@ class Collision implements System{
 
     	var playerPlacement : Placement = null;
     	for(p in players){
-        if(p.player.washurt>0){p.player.washurt-=1;}
-        else{p.state.setState("idle",now);}
       		playerPlacement = p.placement;
       		if(Util.AABB(playerPlacement.rect,mobPlacement.rect)==true){
       			p.player.life=0;
@@ -60,8 +57,6 @@ class Collision implements System{
       				p.player.contactnumber+=1;
              /* p.player.speed-=1;*/
               p.player.life-=1;
-              p.player.washurt=8;
-              p.state.setState("hurt",now);
       				p.player.contact=true;
       				p.placement.contact=true;
       				/*j.placement.contact=true;*/
