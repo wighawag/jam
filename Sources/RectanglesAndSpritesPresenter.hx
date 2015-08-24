@@ -165,7 +165,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
      for(i in 0...20){
       spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,12200+i*60, 160, 0, 60, 67, false);
      }
-     
+
       for(sprite in sprites){
         var placement = sprite.placement;
         var state = sprite.state;
@@ -260,7 +260,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
 
     frame.usingG2({
-      
+
       g2.color = Color.Yellow;
       g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
       g2.drawString("PIECE",5,5);
@@ -270,8 +270,15 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       g2.drawString(""+player.contactpiece+"",200,5);
       g2.drawString(""+player.contactnumber+"",200,25);
       g2.drawString(""+(player.contactnumber/5*1000+player.contactpiece*50)+"",200,45);
-      
-      
+
+      if(elapsedTime < 1){
+        g2.drawString("Monster!",300,355);
+      }
+
+      if(elapsedTime > 1 && elapsedTime < 2){
+        g2.drawString("I am not a monster!",700,355);
+      }
+
      });
 
    if(player.life==0){
