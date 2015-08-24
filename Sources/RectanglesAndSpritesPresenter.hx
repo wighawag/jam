@@ -93,13 +93,13 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
     }else{
       camera.centerOn(0,0);
     }
-    
+
     if(sceneEntity.interlude==false && sceneEntity.gameover==false){
-    
+
     viewport.ensureSize(frame.width, frame.height);
  		camera.handleViewport(viewport);
 
-   
+
     frame.usingG4({
 
  			viewport.apply(g4);
@@ -135,7 +135,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       g2.popTransformation();
 		 });*/
 
-    
+
 
 
  		frame.usingG4({
@@ -156,10 +156,18 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         var placement = sprite.placement;
         var state = sprite.state;
         var asset = sprite.asset;
-        spriting.writeToBuffer(testBuffer,context,asset.id,state.state,state.getElapsedTime(elapsedTime),placement.x,placement.y,0, placement.width, placement.height, true);
+        if(asset.id == "player"){
+          context.save();
+          context.scale(0.4,0.4);
+          spriting.writeToBuffer(testBuffer,context,asset.id,state.state,state.getElapsedTime(elapsedTime),placement.x,placement.y,0, 0, 0, true);
+          context.restore();
+        }else{
+          spriting.writeToBuffer(testBuffer,context,asset.id,state.state,state.getElapsedTime(elapsedTime),placement.x,placement.y,0, placement.width, placement.height, true);
+        }
+
       }
 
-      
+
  			context.restore();
 
  			g4.usingProgram("texture.vert","normal.frag",{
@@ -172,7 +180,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         /*program.set_ambientColor(0.1,0.1,0.1,0.1);*/
         program.set_ambientColor(0.4,0.4,0.4,0.4);
         program.set_ambientColor2(0.4,0.4,0.4,0.4);
-        
+
         if(playerPlacement != null){
           var lightPosVec = new Vector3(80+ (playerPlacement.x)*99/100,-30,0.075);
           /*var lightPosVec = new Vector3(playerPlacement.x+30,playerPlacement.y-30,0.075);*/
@@ -192,13 +200,13 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
         program.set_falloff(0.2,0.4,5); //TODO? would clear cache and set values to be uploaded only
         /*program.set_falloff(0.2,0.4,40);*/
 
-       
+
         var lightPosVec2 = new Vector3(mobPlacement.x+30,mobPlacement.y+30,0.075);
         var newLightPosVec2 = camera.toBufferCoordinates(lightPosVec2);
         program.set_lightPos2(newLightPosVec2.x, newLightPosVec2.y, newLightPosVec2.z);
         program.set_lightColor2(1,1,0,1);
         /*program.set_falloff2(0.2,0.8,20);*/
-        program.set_falloff2(0.2,0.4,200);   
+        program.set_falloff2(0.2,0.4,200);
 
  				program.draw(testBuffer);
 
@@ -206,7 +214,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
  		});
 
-    
+
     frame.usingG2({
       g2.pushTransformation(camera.g2Transformation);
 
@@ -218,7 +226,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
         g2.color = Color.Black;
         g2.fillRect(-FOCUS_WIDTH/2+ (playerPlacement.x),180, FOCUS_WIDTH, FOCUS_HEIGHT);
-      
+
       for(sprite in sprites){
         var placement = sprite.placement;
         if(placement.contact==true){g2.color = Color.Red;}
@@ -240,7 +248,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
       g2.drawString(""+player.contactnumber+"",playerPlacement.x-0.5*FOCUS_WIDTH+200,-FOCUS_HEIGHT/2+35);
       g2.drawString(""+player.speed+"",playerPlacement.x-0.5*FOCUS_WIDTH+200,-FOCUS_HEIGHT/2+60);
-      g2.popTransformation();   
+      g2.popTransformation();
      });
 
 
@@ -250,7 +258,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       g2.clear();
       g2.color = Color.Green;
       g2.drawString("Well Done Your HighScore is:...",frame.width/2,frame.height/2);
-      
+
 
      });
   }
@@ -260,7 +268,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       g2.color = Color.Green;
       g2.drawLine(0,0,frame.width,frame.height);
       g2.drawString("GameOver",frame.width/2,frame.height/2);
-      
+
 
      });
   }
