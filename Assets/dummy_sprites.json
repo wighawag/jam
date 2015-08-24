@@ -21,6 +21,16 @@
     "frames":[
         {"textureCutOut":"spear.png"}		
 	  ]
+	}},"fire":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"fire.png"}		
+	  ]
+	}},"roc":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"roc.png"}		
+	  ]
 	}},"greengrass":{"idle":{
     "defaultMsDuration":100,
     "frames":[
@@ -42,6 +52,13 @@
 		{"textureCutOut":"obj_Walk005.png"},
 		{"textureCutOut":"obj_Walk006.png"},
 		{"textureCutOut":"obj_Walk007.png"}
+	  ]
+	}},"piece":{"idle":{
+    "defaultMsDuration":300,
+    "frames":[
+        {"textureCutOut":"piece001.png"},
+		{"textureCutOut":"piece002.png"},
+		{"textureCutOut":"piece003.png"}
 	  ]
 	}},"player":{"idle":{
     "defaultMsDuration":100,

@@ -11,6 +11,11 @@ class Player{
   public var distroll:Float;
   public var life : Float=1;
   public var speed:Float;
+  public var maxspeed:Float;
+  public var contact:Bool;
+  public var contactnumber:Float=0;
+  public var contactroc:Bool=false;
+  public var contactpiece:Float=0;
 
   public function new(speed){
     reset();
@@ -19,6 +24,8 @@ class Player{
     rolling=false;
     distroll=0;
     this.speed=speed;
+    maxspeed=speed;
+    contact=false;
   }
 
   public function reset(){

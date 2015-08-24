@@ -96,10 +96,10 @@
     },
   
     "obj_Walk001.png":{
-      "x1":699,
-      "y1":1550,
-      "x2":789,
-      "y2":1700,
+      "x1":318,
+      "y1":1825,
+      "x2":408,
+      "y2":1975,
 	  "refX":37,
 	  "refY":31,
       "srcX":91,
@@ -132,10 +132,10 @@
     },
   
     "obj_Walk003.png":{
-      "x1":606,
-      "y1":1550,
-      "x2":697,
-      "y2":1700,
+      "x1":225,
+      "y1":1825,
+      "x2":316,
+      "y2":1975,
 	  "refX":45,
 	  "refY":31,
       "srcX":83,
@@ -150,9 +150,9 @@
     },
   
     "obj_Walk004.png":{
-      "x1":283,
+      "x1":354,
       "y1":1669,
-      "x2":367,
+      "x2":438,
       "y2":1817,
 	  "refX":38,
 	  "refY":32,
@@ -168,10 +168,10 @@
     },
   
     "obj_Walk005.png":{
-      "x1":441,
-      "y1":1611,
-      "x2":529,
-      "y2":1758,
+      "x1":410,
+      "y1":1819,
+      "x2":498,
+      "y2":1966,
 	  "refX":37,
 	  "refY":31,
       "srcX":91,
@@ -221,6 +221,60 @@
 	  "cornerOffsetY":97
     },
   
+    "piece001.png":{
+      "x1":134,
+      "y1":1695,
+      "x2":251,
+      "y2":1823,
+	  "refX":58,
+	  "refY":64,
+      "srcX":6,
+      "srcY":0,
+	  "srcWidth":117,
+      "srcHeight":128,
+      "originalWidth" :128,
+      "originalHeight" :128,
+      "rotated":false,
+	  "cornerOffsetX":6,
+	  "cornerOffsetY":0
+    },
+  
+    "piece002.png":{
+      "x1":253,
+      "y1":1695,
+      "x2":352,
+      "y2":1823,
+	  "refX":49,
+	  "refY":64,
+      "srcX":15,
+      "srcY":0,
+	  "srcWidth":99,
+      "srcHeight":128,
+      "originalWidth" :128,
+      "originalHeight" :128,
+      "rotated":false,
+	  "cornerOffsetX":15,
+	  "cornerOffsetY":0
+    },
+  
+    "piece003.png":{
+      "x1":968,
+      "y1":2,
+      "x2":1012,
+      "y2":130,
+	  "refX":22,
+	  "refY":64,
+      "srcX":42,
+      "srcY":0,
+	  "srcWidth":44,
+      "srcHeight":128,
+      "originalWidth" :128,
+      "originalHeight" :128,
+      "rotated":false,
+	  "cornerOffsetX":42,
+	  "cornerOffsetY":0
+    },
+  
     "player.png":{
       "x1":747,
       "y1":697,
@@ -254,6 +308,24 @@
       "originalHeight" :512,
       "rotated":false,
 	  "cornerOffsetX":0,
+	  "cornerOffsetY":0
+    },
+  
+    "roc.png":{
+      "x1":440,
+      "y1":1669,
+      "x2":567,
+      "y2":1792,
+	  "refX":63,
+	  "refY":63,
+      "srcX":1,
+      "srcY":0,
+	  "srcWidth":127,
+      "srcHeight":123,
+      "originalWidth" :128,
+      "originalHeight" :128,
+      "rotated":false,
+	  "cornerOffsetX":1,
 	  "cornerOffsetY":0
     },
   

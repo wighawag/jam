@@ -10,6 +10,7 @@ class Placement{
   public var width : Float = 1;
   public var height : Float = 1;
   public var rect:RectPoly;
+  public var contact:Bool=false;
 
   public function new(x,y,width,height){
     this.x = x;
