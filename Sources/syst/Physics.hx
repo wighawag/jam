@@ -6,8 +6,6 @@ import cosmos.System;
 
 using cosmos.ModelAccess;
 
-import syst.SceneSys;
-
 import comp.Placement;
 import comp.State;
 import comp.Asset;
@@ -32,24 +30,24 @@ class Physics implements System{
   /*var scenes : Entities<{scene:Scene}>;*/
   var pieces : Entities<{placement : Placement, piece :Piece}>;
   var rocs : Entities<{placement : Placement, roc :Roc}>;
-  public var sceneSys:SceneSys;
+  public var _session:Session;
   public var pit:Bool;
 
-  public function new(sceneSys:SceneSys){
-    this.sceneSys = sceneSys;
+  public function new(session:Session){
+    this._session = session;
      }
 
 	public function update(now : Float, dt : Float){
-    
+
     var playerPlacement : Placement = null;
     /*var sceneEntity : Scene = null;
     for(p in scenes){
       sceneEntity = p.scene;
       break;
     }*/
-    
 
-    
+
+
 
      for(j in projs){
       j.placement.x+= dt * j.proj.speed;
@@ -59,7 +57,7 @@ class Physics implements System{
       if(j.proj.lifetime==0){model.removeEntity(j);}
       /*if(j.proj.contact==true){model.removeEntity(j);}*/
 
-      } 
+      }
 
 
     for(p in players){
@@ -71,7 +69,7 @@ class Physics implements System{
         p.player.fall=true;}
 
 
-      if(p.player.fall==true){p.placement.vx =0;}    
+      if(p.player.fall==true){p.placement.vx =0;}
       else{p.placement.vx =  p.player.speed;}
 
       if(pit==true && p.placement.y>200 && p.player.fall==true){
@@ -80,8 +78,8 @@ class Physics implements System{
       /*if(p.player.speed>p.player.maxspeed){p.player.speed=p.player.maxspeed;}
       if(p.player.contactroc==true){p.placement.vx =  p.player.speed/2;}
       else{p.placement.vx =  p.player.speed;}*/
-      
-      
+
+
         /*if(p.player.goingLeft&& p.player.jumping==false){
           p.placement.vx =  -300;
         }
@@ -90,7 +88,7 @@ class Physics implements System{
         }
         else if( p.player.jumping==false){ p.placement.vx =0;}*/
 
-        
+
 
         if(p.player.jump==true && p.player.rolling==false && p.player.jumping==false && pit==false){
           p.state.setState("jump",now);
@@ -112,7 +110,7 @@ class Physics implements System{
           p.state.setState("idle",now);
         }
 
-        
+
 
         p.placement.x+= dt * p.placement.vx;
         p.placement.y+= dt * p.placement.vy;
@@ -147,21 +145,21 @@ class Physics implements System{
 
 
 
-        
+
 
 
 
         //////scene
-        if(sceneSys.interlude==false){
-          sceneSys.highScore=( (1-p.player.contactnumber/5)*1000+p.player.contactpiece*50);
+        if(_session.interlude==false){
+          _session.highScore=( (1-p.player.contactnumber/5)*1000+p.player.contactpiece*50);
 
           if(p.placement.x>12500){
-          sceneSys.screen=2;
-          sceneSys.winning=true;
+          _session.screen=2;
+          _session.winning=true;
           p.placement.x=12600;
           }
           if(p.player.life==0){
-            sceneSys.gameover=true;
+            _session.gameover=true;
           }
         }
       }
@@ -186,7 +184,7 @@ class Physics implements System{
           model.addEntity([new Placement(m.placement.x,130,30,20), new State("idle", now), new Asset("fire"), new Projectile(200+ m.placement.vx)]);
         }
       }
-     } 
+     }
 
       for(pi in pieces){ if(pi.placement.x+100<playerPlacement.x){model.removeEntity(pi);}}
 

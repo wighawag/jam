@@ -100,7 +100,9 @@ class Shell implements Application{
     if(_screenToRemoveOnStart[currentScreen]){
       screens.remove(currentScreen);
       _screenToRemoveOnStart.remove(currentScreen);
+      currentIndex --;
     }
+    
     currentScreen.enter(input);
   }
 }
