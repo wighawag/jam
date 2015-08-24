@@ -43,7 +43,7 @@ class Controller implements System{
       if(_input.isKeyDown(Key.UP)){
         player.jump = true;
       }else if(_input.isKeyDown(Key.DOWN)){
-        player.crouch = true;
+        player.roll = true;
       }
 
     }

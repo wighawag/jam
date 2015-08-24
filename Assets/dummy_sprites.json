@@ -6,7 +6,7 @@
         {"textureCutOut":"castle.jpg"}		
 	  ]
 	}},"village":{"idle":{
-    "defaultMsDuration":100,
+    "defaultMsDuration":200,
     "frames":[
         {"textureCutOut":"village.png"},
 		{"textureCutOut":"village2.png"}		
@@ -15,6 +15,21 @@
     "defaultMsDuration":100,
     "frames":[
         {"textureCutOut":"night.jpg"}		
+	  ]
+	}},"spear":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"spear.png"}		
+	  ]
+	}},"fire":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"fire.png"}		
+	  ]
+	}},"roc":{"idle":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"roc.png"}		
 	  ]
 	}},"greengrass":{"idle":{
     "defaultMsDuration":100,
@@ -38,6 +53,13 @@
 		{"textureCutOut":"obj_Walk006.png"},
 		{"textureCutOut":"obj_Walk007.png"}
 	  ]
+	}},"piece":{"idle":{
+    "defaultMsDuration":300,
+    "frames":[
+        {"textureCutOut":"piece001.png"},
+		{"textureCutOut":"piece002.png"},
+		{"textureCutOut":"piece003.png"}
+	  ]
 	}},"player":{"idle":{
     "defaultMsDuration":100,
     "frames":[
@@ -60,7 +82,7 @@
 	  ]
 	},
 	"jump":{
-    "defaultMsDuration":100,
+    "defaultMsDuration":300,
     "frames":[
         {"textureCutOut":"spriter_monster_jump_000.png"},
 		{"textureCutOut":"spriter_monster_jump_001.png"},
@@ -71,7 +93,7 @@
 	"roll":{
     "defaultMsDuration":100,
     "frames":[
-        {"textureCutOut":"spriter_monster_roll_000.png"},
+        {"textureCutOut":"spriter_monster_roll_001.png"},
 		{"textureCutOut":"spriter_monster_roll_001.png"},
 		{"textureCutOut":"spriter_monster_roll_002.png"},
 		{"textureCutOut":"spriter_monster_roll_003.png"},

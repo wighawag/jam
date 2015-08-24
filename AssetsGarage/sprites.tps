@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.9.2</string>
         <key>fileName</key>
-        <string>C:/Development/haxe/kha_test/jam/AssetsGarage/sprites.tps</string>
+        <string>C:/Users/Lenouvo/gamedev/ld33/notsosurejam/fork/jam/AssetsGarage/sprites.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -228,6 +228,11 @@
             <filename>spriter_monster_roll_007.png</filename>
             <filename>spriter_monster_roll_000.png</filename>
             <filename>village2.png</filename>
+            <filename>fire.png</filename>
+            <filename>roc.png</filename>
+            <filename>piece003.png</filename>
+            <filename>piece001.png</filename>
+            <filename>piece002.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
@@ -244,9 +249,9 @@
         <key>autodetectNormalMaps</key>
         <true/>
         <key>normalMapFilter</key>
-        <string></string>
+        <string>normal</string>
         <key>normalMapSuffix</key>
-        <string></string>
+        <string>_n.png</string>
         <key>normalMapSheetFileName</key>
         <filename></filename>
     </struct>
