@@ -13,6 +13,9 @@ import syst.Controller;
 import syst.Physics;
 import syst.Collision;
 
+import kha.audio1.Audio;
+import kha.Loader;
+
 class GameScreen implements Screen {
 
   var _model : Model;
@@ -28,6 +31,7 @@ class GameScreen implements Screen {
     _model.setupPresenter(_presenter);
 
     _model.start(0);
+    Audio.playMusic(Loader.the.getMusic("music"), true);
   }
 
   public function exit(elapsedTime : Float){

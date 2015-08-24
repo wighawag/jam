@@ -32,6 +32,9 @@ import kha.math.Matrix4;
 import kha.Loader;
 import kha.FontStyle;
 
+import kha.audio1.Audio;
+
+
 class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
   inline static var FOCUS_WIDTH = 600;
@@ -69,6 +72,10 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
   		backgroundBuffer.writeIndex(2);
   		backgroundBuffer.writeIndex(3);
   }
+
+  // public function start(now : Float){
+  //
+  // }
 
   public function render(elapsedTime : Float, frame:Framebuffer, input : Input) : Void{
 

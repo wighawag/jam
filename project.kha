@@ -39,6 +39,11 @@
 			"file": "GrapeSoda.ttf",
 			"size": 72,
 			"name": "GrapeSoda"
+		},
+		{
+			"type": "music",
+			"file": "music.wav",
+			"name": "music"
 		}
 	],
 	"rooms": [
@@ -47,7 +52,8 @@
 				"dummy_atlas.json",
 				"dummy_atlas.png",
 				"dummy_sprites.json",
-				"dummy_atlas_n.png"
+				"dummy_atlas_n.png",
+				"music"
 			],
 			"name": "room0",
 			"neighbours": [],
