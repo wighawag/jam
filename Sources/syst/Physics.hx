@@ -6,6 +6,8 @@ import cosmos.System;
 
 using cosmos.ModelAccess;
 
+import syst.SceneSys;
+
 import comp.Placement;
 import comp.State;
 import comp.Asset;
@@ -27,22 +29,27 @@ class Physics implements System{
   var players : Entities<{placement : Placement,state:State, player : Player}>;
   var mobs : Entities<{placement : Placement, mob : Mob}>;
   var projs : Entities<{placement : Placement, proj :Projectile}>;
-  var scenes : Entities<{scene:Scene}>;
+  /*var scenes : Entities<{scene:Scene}>;*/
   var pieces : Entities<{placement : Placement, piece :Piece}>;
   var rocs : Entities<{placement : Placement, roc :Roc}>;
+  public var sceneSys:SceneSys;
+
+  public function new(sceneSys:SceneSys){
+    this.sceneSys = sceneSys;
+     }
 
 	public function update(now : Float, dt : Float){
     
     var playerPlacement : Placement = null;
-    var sceneEntity : Scene = null;
+    /*var sceneEntity : Scene = null;
     for(p in scenes){
       sceneEntity = p.scene;
       break;
-    }
+    }*/
     
 
     for(m in mobs){
-      m.placement.vx =  203;
+      m.placement.vx =  m.mob.speed;
       m.placement.x+= dt * m.placement.vx;
       m.placement.rect.x=m.placement.x-10;
       m.placement.rect.y=m.placement.y;
@@ -73,9 +80,11 @@ class Physics implements System{
 
 
     for(p in players){
-      if(p.player.speed>p.player.maxspeed){p.player.speed=p.player.maxspeed;}
+      /*if(p.player.speed>p.player.maxspeed){p.player.speed=p.player.maxspeed;}
       if(p.player.contactroc==true){p.placement.vx =  p.player.speed/2;}
-      else{p.placement.vx =  p.player.speed;}
+      else{p.placement.vx =  p.player.speed;}*/
+
+      p.placement.vx =  p.player.speed;
       
         /*if(p.player.goingLeft&& p.player.jumping==false){
           p.placement.vx =  -300;
@@ -140,14 +149,15 @@ class Physics implements System{
 
         playerPlacement=p.placement;
         //////scene
-        if(sceneEntity.interlude==false){
+        if(sceneSys.interlude==false){
+          sceneSys.highScore=(p.player.contactnumber/5*1000+p.player.contactpiece*50);
 
           if(p.placement.x>11500){
-          sceneEntity.screen=2;
-          sceneEntity.interlude=true;
+          sceneSys.screen=2;
+          sceneSys.interlude=true;
           }
           if(p.player.life==0){
-            sceneEntity.gameover=true;
+            sceneSys.gameover=true;
           }
         }
       }
