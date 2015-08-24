@@ -43,7 +43,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 	var backgroundBuffer : Buffer<{pos:Vec3}>;
 	var testBuffer : Buffer<{position:Vec3,alpha:Float,texCoords:Vec2}>;
 	var viewport : Viewport = new Viewport({type : Fill, position: Center});
-	var camera : OrthoCamera = new OrthoCamera(FOCUS_WIDTH,FOCUS_HEIGHT);
+	var camera : OrthoCamera = new OrthoCamera();
 
   var spriting : Sprites;
 
@@ -79,6 +79,8 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
   public function render(elapsedTime : Float, frame:Framebuffer, input : Input) : Void{
 
+    viewport.ensureSize(frame.width, frame.height);
+ 		camera.handleViewport(viewport);
     /*var sceneEntity : Scene = null;
     for(p in scenes){
       sceneEntity = p.scene;
@@ -99,16 +101,12 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       break;
     }
     if(playerPlacement != null){
-        camera.centerOn(playerPlacement.x,0);
+        camera.setFocus(playerPlacement.x - FOCUS_WIDTH/2, - FOCUS_HEIGHT/2,FOCUS_WIDTH, FOCUS_HEIGHT);
     }else{
-      camera.centerOn(0,0);
+      trace("no playerPlacement");
     }
 
     /*if(sceneEntity.interlude==false && sceneEntity.gameover==false){*/
-
-    viewport.ensureSize(frame.width, frame.height);
- 		camera.handleViewport(viewport);
-
 
     frame.usingG4({
 

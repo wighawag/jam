@@ -74,6 +74,23 @@
 		{"textureCutOut":"spriter_monster_walk_008.png"}
 	  ]
 	},
+	"hurt":{
+    "defaultMsDuration":100,
+    "frames":[
+        {"textureCutOut":"spriter_monster_jump_002.png"},
+		{"textureCutOut":"spriter_monster_jump_002.png"},
+		{"textureCutOut":"spriter_monster_jump_002.png"},
+		{"textureCutOut":"spriter_monster_walk_000.png"},
+		{"textureCutOut":"spriter_monster_walk_001.png"},
+		{"textureCutOut":"spriter_monster_walk_002.png"},
+		{"textureCutOut":"spriter_monster_walk_003.png"},
+		{"textureCutOut":"spriter_monster_walk_004.png"},
+		{"textureCutOut":"spriter_monster_walk_005.png"},
+		{"textureCutOut":"spriter_monster_walk_006.png"},
+		{"textureCutOut":"spriter_monster_walk_007.png"},
+		{"textureCutOut":"spriter_monster_walk_008.png"}
+	  ]
+	},
 	"crouch":{
     "defaultMsDuration":100,
     "frames":[
