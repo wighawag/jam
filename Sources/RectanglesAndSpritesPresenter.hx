@@ -43,7 +43,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 	var backgroundBuffer : Buffer<{pos:Vec3}>;
 	var testBuffer : Buffer<{position:Vec3,alpha:Float,texCoords:Vec2}>;
 	var viewport : Viewport = new Viewport({type : Fill, position: Center});
-	var camera : OrthoCamera = new OrthoCamera();
+	var camera : OrthoCamera = new OrthoCamera(FOCUS_WIDTH,FOCUS_HEIGHT);
 
   var spriting : Sprites;
 
@@ -52,7 +52,7 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
   var mobs : Entities<{placement:Placement, mob: Mob}>;
   var sprites : Entities<{placement:Placement, state: State, asset : Asset}>;
   var players : Entities<{placement:Placement,player:Player}>; //the focus should probably done in the model ? maybe an entity with a component focus?
-  /*var scenes : Entities<{scene:Scene}>;*/
+  var scenes : Entities<{scene:Scene}>;
 
   public function new(spriting : Sprites){
       this.spriting = spriting;
@@ -79,13 +79,13 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
   public function render(elapsedTime : Float, frame:Framebuffer, input : Input) : Void{
 
-    viewport.ensureSize(frame.width, frame.height);
- 		camera.handleViewport(viewport);
-    /*var sceneEntity : Scene = null;
+    /*viewport.ensureSize(frame.width, frame.height);
+ 		camera.handleViewport(viewport);*/
+    var sceneEntity : Scene = null;
     for(p in scenes){
       sceneEntity = p.scene;
       break;
-    }*/
+    }
 
     var mobPlacement : Placement = null;
     for(m in mobs){
@@ -101,10 +101,13 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
       break;
     }
     if(playerPlacement != null){
-        camera.setFocus(playerPlacement.x - FOCUS_WIDTH/2, - FOCUS_HEIGHT/2,FOCUS_WIDTH, FOCUS_HEIGHT);
+         camera.centerOn(playerPlacement.x,0);
     }else{
-      trace("no playerPlacement");
+      camera.centerOn(0,0);
+      /*trace("no playerPlacement");*/
     }
+    viewport.ensureSize(frame.width, frame.height);
+     camera.handleViewport(viewport);
 
     /*if(sceneEntity.interlude==false && sceneEntity.gameover==false){*/
 
@@ -154,15 +157,75 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
  			var context = new ys.g.Context();
  			context.save();
  			testBuffer.rewind();
+      if(sceneEntity.interlude==false){
       spriting.writeToBuffer(testBuffer,context,"night", "idle",elapsedTime,90+ (playerPlacement.x)*99/100,0, 0, 1.3*FOCUS_WIDTH, 1.3*FOCUS_HEIGHT, true);
-      /*spriting.writeToBuffer(testBuffer,context,"prarie", "idle",elapsedTime, FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);
-      spriting.writeToBuffer(testBuffer,context,"castle", "idle",elapsedTime, 2*FOCUS_WIDTH,0, 0, FOCUS_WIDTH, FOCUS_HEIGHT, true);*/
-      for(i in 0...206){
-      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,-300+i*60, 160, 0, 60, 67, false);
+       spriting.writeToBuffer(testBuffer,context,"panneau", "idle",elapsedTime,11500, 100, 0, 128, 128, true);
+       
+     
+        
+      for(i in 0...216){
+      spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,-900+i*60, 160, 0, 60, 67, false);
      }
      for(i in 0...20){
       spriting.writeToBuffer(testBuffer,context,"greengrass", "idle",elapsedTime,12200+i*60, 160, 0, 60, 67, false);
      }
+     }
+     else if(sceneEntity.interlude==true){
+      spriting.writeToBuffer(testBuffer,context,"castle", "idle",elapsedTime,90+ (playerPlacement.x)*99/100,-100, 0, 1.3*FOCUS_WIDTH, 1.3*FOCUS_HEIGHT, true);
+      
+      for(i in 0...22){
+      spriting.writeToBuffer(testBuffer,context,"wall", "idle",elapsedTime,-900+i*600, 80, 0, 600, 600, true);}
+
+      for(i in 0...26){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,-900+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:630,y:770},
+     for(i in 0...8){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,780+i*60, 160, 0, 60, 67, false);
+     }
+     
+     // {x:1230,y:1370},
+     for(i in 0...15){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,1380+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:2250,y:2390},
+     for(i in 0...6){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,2400+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:2730,y:2870},
+     for(i in 0...6){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,2880+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:3210,y:3320},
+     for(i in 0...6){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,3330+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:3630,y:3770},
+     for(i in 0...5){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,3780+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:4050,y:4190},
+     for(i in 0...21){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,4200+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:5430,y:5570},
+     for(i in 0...8){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,5580+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:6030,y:6170},
+     for(i in 0...3){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,6180+i*60, 160, 0, 60, 67, false);
+     }
+     // {x:6330,y:6470}
+     for(i in 0...20){
+      spriting.writeToBuffer(testBuffer,context,"ground", "idle",elapsedTime,6480+i*60, 160, 0, 60, 67, false);
+     }
+     }
+
+
+     for(i in 0...Std.int(player.life)){
+        spriting.writeToBuffer(testBuffer,context,"head", "idle",elapsedTime,280+playerPlacement.x-i*30, -180, 0, 30, 30, false);
+        }
 
       for(sprite in sprites){
         var placement = sprite.placement;
@@ -261,13 +324,8 @@ class RectanglesAndSpritesPresenter implements CosmosKhaPresenter{
 
       g2.color = Color.Yellow;
       g2.font = Loader.the.loadFont("Arial", new FontStyle(false, false, false), 24);
-      g2.drawString("PIECE",5,5);
-      g2.drawString("COLLISION",5,25);
-      g2.drawString("HIGHSCORE",5,45);
-
-      g2.drawString(""+player.contactpiece+"",200,5);
-      g2.drawString(""+player.contactnumber+"",200,25);
-      g2.drawString(""+(player.contactnumber/5*1000+player.contactpiece*50)+"",200,45);
+      g2.drawString("Score:",5,5);
+      g2.drawString(""+Std.int((1-player.contactnumber/10)*100+player.contactpiece*50)+"",100,5);
 
       if(elapsedTime < 1){
         g2.drawString("Monster!",300,355);

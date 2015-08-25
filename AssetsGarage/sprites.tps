@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.9.2</string>
         <key>fileName</key>
-        <string>C:/Users/Lenouvo/gamedev/ld33/notsosurejam/fork/jam/AssetsGarage/sprites.tps</string>
+        <string>C:/Users/Lenouvo/gamedev/ld33/notsosurejam/fork2/jam/AssetsGarage/sprites.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -198,9 +198,6 @@
             <filename>obj_Walk005.png</filename>
             <filename>obj_Walk006.png</filename>
             <filename>obj_Walk007.png</filename>
-            <filename>night.jpg</filename>
-            <filename>castle.jpg</filename>
-            <filename>prarie.jpg</filename>
             <filename>player.png</filename>
             <filename>greengrass3.blend_texture.png</filename>
             <filename>spriter_monster_walk_000.png</filename>
@@ -233,6 +230,12 @@
             <filename>piece003.png</filename>
             <filename>piece001.png</filename>
             <filename>piece002.png</filename>
+            <filename>pann.png</filename>
+            <filename>wall.png</filename>
+            <filename>castle2.png</filename>
+            <filename>night2.png</filename>
+            <filename>head.png</filename>
+            <filename>ground.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

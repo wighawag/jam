@@ -18,6 +18,8 @@ class Player{
   public var contactpiece:Float=0;
   public var fall : Bool;
 
+public var washurt : Float=0;
+
   public function new(speed){
     reset();
 

@@ -88,6 +88,12 @@ class Collision implements System{
   
             if(Util.AABB(playerPlacement.rect,pi.placement.rect)==true){
               p.player.contactpiece+=1;
+              if(p.player.contactpiece==100){p.player.life+=1;}
+              else if(p.player.contactpiece==200){p.player.life+=1;}
+              else if(p.player.contactpiece==300){p.player.life+=1;}
+              else if(p.player.contactpiece==400){p.player.life+=1;}
+              else if(p.player.contactpiece==500){p.player.life+=1;}
+              else if(p.player.contactpiece==600){p.player.life+=1;}
               /*p.player.speed+=0.1;*/
               p.player.contact=true;
               p.placement.contact=true;
