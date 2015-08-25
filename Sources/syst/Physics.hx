@@ -17,34 +17,46 @@ import comp.Projectile;
 import comp.Roc;
 import comp.Piece;
 
+
+
 import kha.Color;
 
 import ys.Input;
 import kha.Key;
+
+typedef Point2 =
+{
+    var x:Float;
+    var y:Float;
+}
 
 class Physics implements System{
 
   var players : Entities<{placement : Placement,state:State, player : Player}>;
   var mobs : Entities<{placement : Placement, mob : Mob}>;
   var projs : Entities<{placement : Placement, proj :Projectile}>;
-  /*var scenes : Entities<{scene:Scene}>;*/
+  var scenes : Entities<{scene:Scene}>;
   var pieces : Entities<{placement : Placement, piece :Piece}>;
   var rocs : Entities<{placement : Placement, roc :Roc}>;
   public var _session:Session;
   public var pit:Bool;
+  public var listpit:Array<Point2>;
 
   public function new(session:Session){
     this._session = session;
+    listpit=[{x:630,y:740},{x:1230,y:1340},{x:2250,y:2360},{x:2730,y:2840},{x:3210,y:3320},{x:3630,y:3740},{x:4050,y:4160},{x:5430,y:5540},{x:6030,y:6140},{x:6330,y:6440}];
+
      }
 
 	public function update(now : Float, dt : Float){
 
     var playerPlacement : Placement = null;
-    /*var sceneEntity : Scene = null;
+    var sceneEntity : Scene = null;
     for(p in scenes){
       sceneEntity = p.scene;
+      sceneEntity.interlude=_session.interlude;
       break;
-    }*/
+    }
 
 
 
@@ -61,9 +73,21 @@ class Physics implements System{
 
 
     for(p in players){
+      
 
+      if(_session.interlude==false){
       if((p.placement.x-20)>12030 && (p.placement.x-20)<12170){pit=true;}
       else{pit=false;}
+       }
+       else{
+        for(i in 0...10){
+          if((p.placement.x-20)>listpit[i].x && (p.placement.x-20)<listpit[i].y){
+            pit=true;
+            break;
+          }
+          else{pit=false;}
+        }
+       }
 
       if(pit==true && p.placement.y>110){
         p.player.fall=true;}
@@ -75,6 +99,8 @@ class Physics implements System{
       if(pit==true && p.placement.y>200 && p.player.fall==true){
         p.player.life=0;
         }
+
+
       /*if(p.player.speed>p.player.maxspeed){p.player.speed=p.player.maxspeed;}
       if(p.player.contactroc==true){p.placement.vx =  p.player.speed/2;}
       else{p.placement.vx =  p.player.speed;}*/
@@ -150,27 +176,23 @@ class Physics implements System{
 
 
         //////scene
-        if(_session.interlude==false){
+
           _session.highScore=( Std.int((1-p.player.contactnumber/10)*100+p.player.contactpiece*50));
 
-          if(p.placement.x>12500){
-          _session.screen=2;
+if(_session.interlude==true){
+   if(playerPlacement.x>7000){
           _session.winning=true;
-          _session.interlude=true;
-          p.placement.x=12600;
-          
-            /*for(m in rocs){model.removeEntity(m);}
-              for(m in pieces){model.removeEntity(m);}
-                for(m in projs){model.removeEntity(m);}*/
-
           }
+}
+
           if(p.player.life==0){
             _session.gameover=true;
             /*for(m in rocs){model.removeEntity(m);}
               for(m in pieces){model.removeEntity(m);}
                 for(m in projs){model.removeEntity(m);}*/
           }
-        }
+
+        
       }
 
       for(m in mobs){
@@ -190,7 +212,10 @@ class Physics implements System{
 
 
       if(m.placement.x >= -210 && m.mob.proj1==false && m.mob.proj2==false && m.mob.timelaunch==0){
-        var rand=Std.int(Math.random()*2);
+        
+        
+        if(_session.interlude==false){
+          var rand=Std.int(Math.random()*2);
         if(rand==0){
           m.mob.timelaunch=80;
           model.addEntity([new Placement(m.placement.x,80,60,20), new State("idle", now), new Asset("spear"), new Projectile(200+ m.placement.vx)]);
@@ -198,10 +223,57 @@ class Physics implements System{
           m.mob.timelaunch=80;
           model.addEntity([new Placement(m.placement.x,130,30,20), new State("idle", now), new Asset("fire"), new Projectile(200+ m.placement.vx)]);
         }
+        }else{
+          var rand=Std.int(Math.random()*10);
+          if(rand==0){
+          m.mob.timelaunch=80;
+          model.addEntity([new Placement(m.placement.x,80,60,20), new State("idle", now), new Asset("spear"), new Projectile(200+ m.placement.vx)]);
+        }
+        }
       }
      }
 
       for(pi in pieces){ if(pi.placement.x+100<playerPlacement.x){model.removeEntity(pi);}}
+
+
+
+
+          if(playerPlacement.x>12500){
+          _session.screen=2;
+          //_session.winning=true;
+          _session.interlude=true;
+          for(m in mobs){m.placement.x=-700;
+            m.placement.y=0;}
+            for(p in players){p.placement.x=-500;}
+          
+          
+            for(m in rocs){model.removeEntity(m);}
+
+
+                  for(i in 0...100 ){
+      var rand=Std.int(Math.random()*3);
+      if(rand==0){
+        model.addEntity([new Placement(100+i*120,60,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+        model.addEntity([new Placement(140+i*120,60,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+        model.addEntity([new Placement(180+i*120,60,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+      }
+      else if(rand==1){
+        model.addEntity([new Placement(100+i*120,85,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+        model.addEntity([new Placement(140+i*120,85,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+        model.addEntity([new Placement(180+i*120,85,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+      }
+      else if(rand==2){
+        model.addEntity([new Placement(100+i*120,160,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+        model.addEntity([new Placement(140+i*120,160,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+        model.addEntity([new Placement(180+i*120,160,15,15), new State("idle", now), new Asset("piece"), new Piece()]);
+      }
+    }
+
+
+         
+          }
+
+
 
   }
 
